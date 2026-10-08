@@ -225,7 +225,9 @@ def extract_person_names(sentence):
         "new york",
         "los angeles",
         "wall street",
-        "the share"
+        "the share",
+        "west germany",
+        "peat group"
     }
 
     names = [
