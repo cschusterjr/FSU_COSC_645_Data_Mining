@@ -12,12 +12,12 @@ import re
 sentence_file = "sents_BNCbaby.txt"
 given_names_file = "given_names.txt"
 surnames_file = "surnames.txt"
-output_file = "extracted_person_names.txt"
+output_file = "Schuster_extracted_person_names.txt"
 max_sentences = 10000
 
 
 # --------------------
-# Load Given Names
+# Load Given Names File
 # --------------------
 
 given_names = set()
@@ -31,7 +31,7 @@ with open(given_names_file, "r", encoding="utf-8") as file:
 
 
 # --------------------
-# Load Surnames
+# Load Surnames File
 # --------------------
 
 surnames = set()
@@ -136,8 +136,7 @@ def extract_person_names(sentence):
     }
 
     # --------------------
-    # Rule 1:
-    # Title + Given Name + Surname
+    # Rule 1:Title + Given Name + Surname
     # Example: Sir James Goldsmith
     # --------------------
 
@@ -159,8 +158,7 @@ def extract_person_names(sentence):
             )
 
     # --------------------
-    # Rule 2:
-    # Title + Surname
+    # Rule 2: Title + Surname
     # Example: Mr Franklin
     # --------------------
 
@@ -219,6 +217,23 @@ def extract_person_names(sentence):
             names.append(f"{first_word} {second_word}")
 
     # --------------------
+    # Filter Common False Positives
+    # --------------------
+
+    excluded_phrases = {
+        "square mile",
+        "new york",
+        "los angeles",
+        "wall street",
+        "the share"
+    }
+
+    names = [
+        name for name in names
+        if name.lower() not in excluded_phrases
+    ]
+
+    # --------------------
     # Remove Duplicates
     # --------------------
 
@@ -229,6 +244,7 @@ def extract_person_names(sentence):
             unique_names.append(name)
 
     return unique_names
+
 
 # --------------------
 # Process the First 10,000 Sentences
