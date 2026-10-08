@@ -185,8 +185,7 @@ def extract_person_names(sentence):
             names.append(f"{title} {next_word}")
 
     # --------------------
-    # Rule 3:
-    # Given Name + Surname
+    # Rule 3: Given Name + Surname
     # Examples: Roland Franklin, Frank Kane
     # --------------------
 
@@ -215,6 +214,8 @@ def extract_person_names(sentence):
                 continue
 
             names.append(f"{first_word} {second_word}")
+
+
 
     # --------------------
     # Filter Common False Positives

@@ -48,11 +48,9 @@ Sentence 150: Malcolm Parkinson
 Sentence 151: Mr Parkinson
 Sentence 152: John Kennedy
 Sentence 157: MARY FAGAN
-Sentence 162: West Germany
 Sentence 165: MARY FAGAN
 Sentence 166: Robert Maxwell
 Sentence 167: Mr Maxwell
-Sentence 167: Peat Group
 Sentence 169: Alton Irby
 Sentence 180: SARAH HOGG
 Sentence 183: Mr Lawson
@@ -79,8 +77,6 @@ Sentence 289: Le Life
 Sentence 289: Life Policy
 Sentence 289: Le Loan
 Sentence 291: MICHAEL PREST
-Sentence 296: West Germany
-Sentence 301: West Germany
 Sentence 301: Germany FRIDAY
 Sentence 301: FRIDAY UK
 Sentence 305: MICHAEL PREST
@@ -101,7 +97,6 @@ Sentence 399: Hill Samuel
 Sentence 403: Mr Baker Thorn
 Sentence 409: PATRICK HOSKING
 Sentence 410: Nigel Lawson
-Sentence 411: West Germany
 Sentence 415: Bill Martin
 Sentence 415: Drew The
 Sentence 419: Mr Martin
@@ -156,7 +151,6 @@ Sentence 593: EARL RUSSELL
 Sentence 594: Sir The Vice
 Sentence 610: DAVID SOSKIN
 Sentence 614: MOLLY MEACHER
-Sentence 617: West Germany
 Sentence 627: Sir Labour
 Sentence 630: Mrs Thatcher
 Sentence 632: DENIS MacSHANE
@@ -452,7 +446,6 @@ Sentence 1217: BONN Reuter
 Sentence 1217: Reuter Chancellor
 Sentence 1217: Helmut Kohl
 Sentence 1217: North Rhine
-Sentence 1217: West Germany
 Sentence 1221: FIONA LENEY
 Sentence 1222: East Germany
 Sentence 1225: President Nicolae
@@ -476,15 +469,12 @@ Sentence 1255: From EDWARD
 Sentence 1255: EDWARD LUCAS
 Sentence 1256: West German
 Sentence 1256: East German
-Sentence 1258: West Germany
 Sentence 1258: Hans Dietrich
 Sentence 1260: East German
-Sentence 1261: West Germany
 Sentence 1262: East Germany
 Sentence 1263: East Germany
 Sentence 1268: Auld Lang
 Sentence 1269: West German
-Sentence 1269: West Germany
 Sentence 1274: West German
 Sentence 1274: Long Live
 Sentence 1274: Germany Long
@@ -497,9 +487,7 @@ Sentence 1296: From ANNE
 Sentence 1296: ANNE APPLEBAUM
 Sentence 1297: East German
 Sentence 1297: West German
-Sentence 1297: West Germany
 Sentence 1299: East Station
-Sentence 1299: West Germany
 Sentence 1301: East German
 Sentence 1302: East Berliner
 Sentence 1302: West Berlin
@@ -1027,7 +1015,6 @@ Sentence 2582: Siegfried Fink
 Sentence 2587: Keith Brown
 Sentence 2587: Mike Roberts
 Sentence 2589: Mike Roberts
-Sentence 2598: West Germany
 Sentence 2602: Mike Roberts
 Sentence 2615: Mike Roberts
 Sentence 2617: First Test
@@ -1060,7 +1047,6 @@ Sentence 2710: Curtis Strange
 Sentence 2710: Tom Kite
 Sentence 2733: Ronan Rafferty
 Sentence 2734: Bob Hope
-Sentence 2736: West Germany
 Sentence 2739: Mark James
 Sentence 2746: Rugby Union
 Sentence 2747: STEVE BALE
@@ -1340,7 +1326,6 @@ Sentence 3122: JOHN McENROE
 Sentence 3122: Michael Chang
 Sentence 3123: Brazil Spain
 Sentence 3123: Japan West
-Sentence 3123: West Germany
 Sentence 3123: China Argentina
 Sentence 3123: Poland Britain
 Sentence 3128: STAFFORD MURRAY
@@ -1433,7 +1418,6 @@ Sentence 3233: Monica Seles
 Sentence 3234: Joe Lovejoy
 Sentence 3235: JOE LOVEJOY
 Sentence 3243: John Carl
-Sentence 3244: West Germany
 Sentence 3245: Carry On
 Sentence 3249: Torrey Canyon
 Sentence 3251: Class II
@@ -1527,11 +1511,9 @@ Sentence 3370: East Germany
 Sentence 3371: From PATRICIA
 Sentence 3371: PATRICIA CLOUGH
 Sentence 3371: EDWARD LUCAS
-Sentence 3372: West Germany
 Sentence 3373: West German
 Sentence 3375: West German
 Sentence 3375: Hermann Huber
-Sentence 3375: West Germany
 Sentence 3376: Hans Dietrich
 Sentence 3376: West German
 Sentence 3378: East German
@@ -1542,10 +1524,8 @@ Sentence 3384: Bonn Berlin
 Sentence 3384: East German
 Sentence 3384: West German
 Sentence 3387: East German
-Sentence 3387: West Germany
 Sentence 3387: East Germany
 Sentence 3389: East Germany
-Sentence 3390: West Germany
 Sentence 3392: East Germany
 Sentence 3394: East Germany
 Sentence 3396: East German
@@ -2755,7 +2735,6 @@ Sentence 7666: Ben Laurance
 Sentence 7667: Morgan Grenfell
 Sentence 7670: Morgan Grenfell
 Sentence 7673: Morgan Grenfell
-Sentence 7674: West Germany
 Sentence 7677: Willis Faber
 Sentence 7678: Willis Faber
 Sentence 7679: Willis Faber
@@ -2929,7 +2908,6 @@ Sentence 8111: Mr Willi
 Sentence 8111: Prime Minister
 Sentence 8112: Mr Krenz
 Sentence 8116: East German
-Sentence 8117: West Germany
 Sentence 8118: Mr Meyer
 Sentence 8120: Mr Manfred Stolpe
 Sentence 8120: Mr Krenz
@@ -3133,7 +3111,6 @@ Sentence 8428: El Salvador
 Sentence 8435: Mr Thomas Pickering
 Sentence 8438: Group For
 Sentence 8439: Spain West
-Sentence 8439: West Germany
 Sentence 8440: Mr Javier Perez
 Sentence 8443: David Hencke
 Sentence 8444: THE King
@@ -3796,7 +3773,6 @@ Sentence 9974: Brian Little
 Sentence 9976: Pat Rowley
 Sentence 9979: Bernard Cotton
 Sentence 9983: Canada Spain
-Sentence 9983: West Germany
 Sentence 9990: France India
 Sentence 9991: Canada England
 Sentence 9991: Germany Ireland
@@ -3805,4 +3781,4 @@ Sentence 9998: Canada France
 Sentence 9998: Germany India
 
 ==================================================
-Total possible person names found: 3800
+Total possible person names found: 3776
