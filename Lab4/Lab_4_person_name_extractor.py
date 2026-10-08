@@ -230,7 +230,6 @@ def extract_person_names(sentence):
 
     return unique_names
 
-
 # --------------------
 # Process the First 10,000 Sentences
 # --------------------
@@ -243,3 +242,36 @@ for sentence_number, sentence in sentences:
 
     for name in names:
         results.append((sentence_number, name))
+
+# --------------------
+# Display Sample Results
+# --------------------
+
+print("\nFirst 50 possible person names:")
+
+for sentence_number, name in results[:50]:
+    print(f"Sentence {sentence_number}: {name}")
+
+print(f"\nTotal possible person names found: {len(results)}")
+
+# --------------------
+# Save Results to Output File
+# --------------------
+
+with open(output_file, "w", encoding="utf-8") as file:
+
+    file.write("COSC 645 - Lab 4\n")
+    file.write("Person Name Extraction Using Name Corpora\n")
+    file.write("First 10,000 BNC Baby Sentences\n")
+    file.write("=" * 50 + "\n\n")
+
+    for sentence_number, name in results:
+        file.write(f"Sentence {sentence_number}: {name}\n")
+
+    file.write("\n" + "=" * 50 + "\n")
+    file.write(
+        f"Total possible person names found: {len(results)}\n"
+    )
+
+
+print(f"\nResults saved to: {output_file}")
