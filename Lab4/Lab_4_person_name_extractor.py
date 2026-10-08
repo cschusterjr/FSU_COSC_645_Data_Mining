@@ -99,25 +99,7 @@ def extract_person_names(sentence):
     # alphabetic words and apostrophes.
     words = re.findall(r"[A-Za-z]+(?:'[A-Za-z]+)?", sentence)
 
-    # Look for a given name followed by a surname.
-    # Examples: Roland Franklin, Frank Kane
-    for i in range(len(words) - 1):
-
-        first_word = words[i]
-        second_word = words[i + 1]
-
-        # Both words should be capitalized.
-        if first_word[0].isupper() and second_word[0].isupper():
-
-            # Check the words against the name corpora.
-            if (
-                first_word.lower() in given_names
-                and second_word.lower() in surnames
-            ):
-                names.append(f"{first_word} {second_word}")
-
-    # Look for a surname following a personal title.
-    # Examples: Mr Franklin, Dr Smith, Professor Jones
+    # Common personal titles.
     titles = {
         "Mr",
         "Mrs",
@@ -131,6 +113,57 @@ def extract_person_names(sentence):
         "Lady"
     }
 
+    # Some words may appear in the given-name corpus even
+    # though they are commonly used as titles or other words.
+    excluded_first_words = {
+        "The",
+        "A",
+        "An",
+        "This",
+        "That",
+        "These",
+        "Those",
+        "Mr",
+        "Mrs",
+        "Ms",
+        "Miss",
+        "Dr",
+        "Prof",
+        "Professor",
+        "Sir",
+        "Lord",
+        "Lady"
+    }
+
+    # --------------------
+    # Rule 1:
+    # Title + Given Name + Surname
+    # Example: Sir James Goldsmith
+    # --------------------
+
+    for i in range(len(words) - 2):
+
+        title = words[i]
+        first_name = words[i + 1]
+        last_name = words[i + 2]
+
+        if (
+            title in titles
+            and first_name[0].isupper()
+            and last_name[0].isupper()
+            and first_name.lower() in given_names
+            and last_name.lower() in surnames
+        ):
+            names.append(
+                f"{title} {first_name} {last_name}"
+            )
+
+    # --------------------
+    # Rule 2:
+    # Title + Surname
+    # Example: Mr Franklin
+    # --------------------
+
     for i in range(len(words) - 1):
 
         title = words[i]
@@ -141,9 +174,54 @@ def extract_person_names(sentence):
             and next_word[0].isupper()
             and next_word.lower() in surnames
         ):
+            # Do not add Title + Surname when it is actually
+            # part of Title + Given Name + Surname.
+            if (
+                i + 2 < len(words)
+                and next_word.lower() in given_names
+                and words[i + 2][0].isupper()
+                and words[i + 2].lower() in surnames
+            ):
+                continue
+
             names.append(f"{title} {next_word}")
 
-    # Remove duplicate names while preserving their order.
+    # --------------------
+    # Rule 3:
+    # Given Name + Surname
+    # Examples: Roland Franklin, Frank Kane
+    # --------------------
+
+    for i in range(len(words) - 1):
+
+        first_word = words[i]
+        second_word = words[i + 1]
+
+        # Do not treat titles or common non-name words
+        # as ordinary given names.
+        if first_word in excluded_first_words:
+            continue
+
+        if (
+            first_word[0].isupper()
+            and second_word[0].isupper()
+            and first_word.lower() in given_names
+            and second_word.lower() in surnames
+        ):
+            # Avoid adding the two-word portion of a name
+            # already captured with a title.
+            if (
+                i > 0
+                and words[i - 1] in titles
+            ):
+                continue
+
+            names.append(f"{first_word} {second_word}")
+
+    # --------------------
+    # Remove Duplicates
+    # --------------------
+
     unique_names = []
 
     for name in names:
@@ -154,14 +232,14 @@ def extract_person_names(sentence):
 
 
 # --------------------
-# Test the Extractor
+# Process the First 10,000 Sentences
 # --------------------
 
-print("\nTesting name extraction on the first 30 sentences:")
+results = []
 
-for sentence_number, sentence in sentences[:30]:
+for sentence_number, sentence in sentences:
 
     names = extract_person_names(sentence)
 
-    if names:
-        print(f"Sentence {sentence_number}: {names}")
+    for name in names:
+        results.append((sentence_number, name))
