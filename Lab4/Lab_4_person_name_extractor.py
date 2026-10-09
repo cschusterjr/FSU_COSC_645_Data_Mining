@@ -3,6 +3,12 @@
 # Charles Schuster
 
 import re
+import csv
+import random
+
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
 
 
 # --------------------
@@ -250,6 +256,39 @@ def extract_person_names(sentence):
 
 
 # --------------------
+# Extract Features for Naive Bayes
+# --------------------
+
+def extract_name_features(name):
+
+    words = name.split()
+    first_word = words[0]
+    last_word = words[-1]
+
+    titles = {
+        "mr", "mrs", "ms", "miss", "dr",
+        "prof", "professor", "sir", "lord", "lady"
+    }
+
+    common_non_name_words = {
+        "world", "office", "group", "policy",
+        "street", "city", "country", "league",
+        "university", "company", "bank"
+    }
+
+    features = [
+        int(first_word.lower() in given_names),
+        int(last_word.lower() in surnames),
+        int(first_word.lower() in titles),
+        int(all(word[0].isupper() for word in words)),
+        int(any(word.lower() in common_non_name_words for word in words)),
+        int(name.isupper()),
+        int(len(words) >= 3)
+    ]
+
+    return features
+
+# --------------------
 # Process the First 10,000 Sentences
 # --------------------
 
@@ -261,6 +300,106 @@ for sentence_number, sentence in sentences:
 
     for name in names:
         results.append((sentence_number, name))
+
+# --------------------
+# Train Bernoulli Naive Bayes
+# --------------------
+
+labeling_file = "Schuster_name_training_labels.csv"
+
+training_names = []
+training_labels = []
+
+with open(labeling_file, "r", encoding="utf-8-sig") as file:
+    reader = csv.DictReader(file)
+
+    for row in reader:
+        training_names.append(row["name"])
+        training_labels.append(int(row["is_person"]))
+
+# Convert names into binary features.
+X = [extract_name_features(name) for name in training_names]
+y = training_labels
+
+# Use 80% of examples for training and 20% for testing.
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.20,
+    random_state=645,
+    stratify=y
+)
+
+# Train the classifier.
+model = BernoulliNB()
+model.fit(X_train, y_train)
+
+# Evaluate predictions on the test data.
+predictions = model.predict(X_test)
+
+print("\nNaive Bayes Classification Results:")
+print(classification_report(y_test, predictions, zero_division=0))
+
+
+# --------------------
+# Apply Naive Bayes to Extracted Names
+# --------------------
+
+nb_results = []
+
+for sentence_number, name in results:
+
+    features = extract_name_features(name)
+
+    prediction = model.predict([features])[0]
+
+    probability = model.predict_proba([features])[0]
+
+    # Probability associated with the person-name class.
+    person_probability = probability[list(model.classes_).index(1)]
+
+    nb_results.append(
+        (sentence_number, name, prediction, person_probability)
+    )
+
+
+# --------------------
+# Save Naive Bayes Results
+# --------------------
+
+nb_output_file = "Schuster_naive_bayes_results.txt"
+
+with open(nb_output_file, "w", encoding="utf-8") as file:
+
+    file.write("COSC 645 - Lab 4\n")
+    file.write("Person Name Classification Using Bernoulli Naive Bayes\n")
+    file.write("=" * 60 + "\n\n")
+
+    for sentence_number, name, prediction, probability in nb_results:
+
+        classification = "Person" if prediction == 1 else "Not Person"
+
+        file.write(
+            f"Sentence {sentence_number}: {name} | "
+            f"{classification} | "
+            f"Probability: {probability:.2f}\n"
+        )
+
+    file.write("\n" + "=" * 60 + "\n")
+
+    total_persons = sum(
+        1 for _, _, prediction, _ in nb_results
+        if prediction == 1
+    )
+
+    file.write(f"Total candidates: {len(nb_results)}\n")
+    file.write(f"Classified as persons: {total_persons}\n")
+    file.write(
+        f"Classified as non-persons: {len(nb_results) - total_persons}\n"
+    )
+
+print(f"\nNaive Bayes results saved to: {nb_output_file}")
+
 
 # --------------------
 # Display Sample Results
