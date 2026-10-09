@@ -260,33 +260,85 @@ def extract_person_names(sentence):
 # --------------------
 
 def extract_name_features(name):
-
     words = name.split()
-    first_word = words[0]
-    last_word = words[-1]
+    lower_words = [word.lower() for word in words]
 
+    first_word = lower_words[0]
+    last_word = lower_words[-1]
+
+    # Common titles associated with people
     titles = {
         "mr", "mrs", "ms", "miss", "dr",
         "prof", "professor", "sir", "lord", "lady"
     }
 
-    common_non_name_words = {
-        "world", "office", "group", "policy",
-        "street", "city", "country", "league",
-        "university", "company", "bank"
+    # Words commonly associated with organizations or places
+    organization_words = {
+        "group", "company", "bank", "corporation",
+        "university", "college", "office", "records",
+        "council", "union", "league", "club",
+        "gallery", "court", "policy", "minister"
+    }
+
+    location_words = {
+        "street", "road", "avenue", "city", "town",
+        "county", "state", "country", "island",
+        "river", "park", "palace", "africa",
+        "germany", "britain", "france", "london",
+        "berlin", "thames"
+    }
+
+    common_words = {
+        "the", "a", "an", "this", "that",
+        "from", "first", "new", "old", "high",
+        "south", "north", "east", "west",
+        "prime", "national", "royal", "white"
     }
 
     features = [
-        int(first_word.lower() in given_names),
-        int(last_word.lower() in surnames),
-        int(first_word.lower() in titles),
+        # Name dictionary features
+        int(first_word in given_names),
+        int(last_word in surnames),
+
+        # Personal title features
+        int(first_word in titles),
+        int(any(word in titles for word in lower_words)),
+
+        # Capitalization features
         int(all(word[0].isupper() for word in words)),
-        int(any(word.lower() in common_non_name_words for word in words)),
         int(name.isupper()),
-        int(len(words) >= 3)
+        int(name.istitle()),
+
+        # Organization and location features
+        int(any(word in organization_words for word in lower_words)),
+        int(any(word in location_words for word in lower_words)),
+
+        # Common word features
+        int(first_word in common_words),
+        int(last_word in common_words),
+
+        # Name structure features
+        int(len(words) == 2),
+        int(len(words) >= 3),
+
+        # Additional dictionary checks
+        int(
+            first_word in given_names
+            and last_word in surnames
+        ),
+
+        # Potential non-person phrases
+        int(
+            any(
+                word in organization_words
+                or word in location_words
+                for word in lower_words
+            )
+        )
     ]
 
     return features
+
 
 # --------------------
 # Process the First 10,000 Sentences
