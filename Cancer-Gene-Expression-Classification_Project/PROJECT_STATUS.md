@@ -36,3 +36,37 @@ In Progress
 
 ## Current Issues
 None.
+
+## Milestone 2: Dataset Selection and Acquisition
+
+**Status:** In Progress
+
+### Dataset Selection
+
+Selected the Gene Expression Cancer RNA-Seq dataset from the UCI Machine Learning Repository. The dataset contains gene-expression measurements derived from The Cancer Genome Atlas (TCGA) and includes five cancer classifications.
+
+Dataset source: https://archive.ics.uci.edu/dataset/401/gene+expression+cancer+rna+seq
+
+### Dataset Validation
+
+Created and executed `src/inspect_dataset.py` to load and inspect the dataset using Python and pandas.
+
+The initial validation confirmed:
+
+- 801 samples
+- 20,531 gene-expression features
+- Five cancer classifications: BRCA, KIRC, LUAD, PRAD, and COAD
+- No missing values
+- Matching sample identifiers between the gene-expression data and classification labels
+
+### Initial Observations
+
+The dataset contains an uneven distribution of cancer types. BRCA has the largest number of samples (300), while COAD has the fewest (78). This class imbalance will be considered when developing and evaluating classification models.
+
+The dataset is also highly dimensional, containing substantially more gene features than samples. This makes it appropriate for evaluating dimensionality reduction techniques such as Principal Component Analysis (PCA).
+
+### Next Steps
+
+- Complete additional data quality checks.
+- Document the dataset source and characteristics.
+- Begin exploratory data analysis and visualization.
