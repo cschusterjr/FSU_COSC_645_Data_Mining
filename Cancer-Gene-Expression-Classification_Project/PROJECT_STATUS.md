@@ -70,3 +70,13 @@ The dataset is also highly dimensional, containing substantially more gene featu
 - Complete additional data quality checks.
 - Document the dataset source and characteristics.
 - Begin exploratory data analysis and visualization.
+
+### Additional Data Quality Findings
+
+Additional validation found no duplicate sample identifiers, duplicate gene-expression profiles, or infinite values. Gene-expression measurements ranged from 0.0000 to 20.7788.
+
+Of the 20,531 gene-expression features, 267 were identified as constant across all 801 samples. These features provide no variation for classification and will be removed during preprocessing. After removing them, 20,264 features would remain.
+
+The original dataset will be preserved, and feature removal will be incorporated into the machine-learning preprocessing pipeline to avoid data leakage.
+
+**Milestone 2 Status: Complete**

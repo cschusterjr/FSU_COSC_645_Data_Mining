@@ -26,3 +26,31 @@ print(data.iloc[:5, :5])
 # Verify that sample identifiers match
 print("\nSample identifiers match:",
       data.index.equals(labels.index))
+
+
+
+# Additional data quality checks
+print("\nADDITIONAL DATA QUALITY CHECKS")
+print("-" * 40)
+
+# Check for duplicate sample identifiers
+duplicate_ids = data.index.duplicated().sum()
+print(f"Duplicate sample identifiers: {duplicate_ids}")
+
+# Check for duplicate gene-expression profiles
+duplicate_profiles = data.duplicated().sum()
+print(f"Duplicate gene-expression profiles: {duplicate_profiles}")
+
+# Check for gene features with no variation
+constant_features = (data.nunique() <= 1).sum()
+print(f"Constant gene features: {constant_features}")
+
+# Check for infinite values
+import numpy as np
+
+infinite_values = np.isinf(data.to_numpy()).sum()
+print(f"Infinite values: {infinite_values}")
+
+# Check the overall range of gene-expression values
+print(f"Minimum expression value: {data.min().min():.4f}")
+print(f"Maximum expression value: {data.max().max():.4f}")
