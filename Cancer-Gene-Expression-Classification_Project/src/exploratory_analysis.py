@@ -48,3 +48,45 @@ print("Cancer Type Distribution:")
 print(class_counts)
 
 print(f"\nChart saved to: {output_path}")
+
+
+# Load the gene-expression measurements
+data = pd.read_csv(data_dir / "data.csv", index_col=0)
+
+print("\nGENE EXPRESSION ANALYSIS")
+print("-" * 30)
+
+print(f"Total gene features: {data.shape[1]}")
+print(f"Total samples: {data.shape[0]}")
+
+# Calculate summary statistics across all gene-expression values
+expression_values = data.to_numpy().flatten()
+
+print(f"Mean Expression: {expression_values.mean():.4f}")
+print(f"Median Expression: {pd.Series(expression_values).median():.4f}")
+print(f"Standard Deviation: {expression_values.std():.4f}")
+print(f"Minimum Expression: {expression_values.min():.4f}")
+print(f"Maximum Expression: {expression_values.max():.4f}")
+
+# Create a histogram of gene-expression values
+plt.figure(figsize=(10, 6))
+
+plt.hist(
+    expression_values,
+    bins=50,
+    color="steelblue",
+    edgecolor="black"
+)
+
+plt.title("Distribution of Gene Expression Values")
+plt.xlabel("Gene Expression Value")
+plt.ylabel("Frequency")
+
+plt.tight_layout()
+
+# Save the visualization
+output_path_hist = results_dir / "gene_expression_distribution.png"
+plt.savefig(output_path_hist, dpi=300)
+plt.close()
+
+print(f"\nHistogram saved to: {output_path_hist}")
