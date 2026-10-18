@@ -80,3 +80,48 @@ Of the 20,531 gene-expression features, 267 were identified as constant across a
 The original dataset will be preserved, and feature removal will be incorporated into the machine-learning preprocessing pipeline to avoid data leakage.
 
 **Milestone 2 Status: Complete**
+
+
+Milestone 3: Data Cleaning and Exploratory Data Analysis
+
+Status: Complete
+
+Exploratory Data Analysis
+
+Exploratory data analysis was performed using Python, pandas, matplotlib, and seaborn. Three visualizations were created to examine the dataset:
+
+Cancer Type Distribution: Confirmed an uneven distribution across five cancer classifications, with BRCA having the largest number of samples (300) and COAD having the fewest (78).
+
+Gene Expression Distribution: Examined the distribution of gene-expression measurements. The mean expression was 6.4433, the median was 7.6096, and the standard deviation was 4.0582. The histogram showed a concentration of values near zero and another concentration around 9 to 10.
+
+Gene Variability: Identified the ten most variable gene features. The highest variance was observed for gene_9176 (44.76). The analysis also confirmed 267 constant features across the complete dataset.
+
+Data Preprocessing
+
+Created src/preprocess_data.py to establish a reproducible preprocessing approach.
+
+The dataset was divided into 640 training samples (approximately 80%) and 161 testing samples (approximately 20%) using stratified sampling.
+
+Feature filtering was performed using VarianceThreshold, which removed 277 constant features based on the training dataset. This reduced the number of features from 20,531 to 20,254.
+
+The remaining features were standardized using StandardScaler. Both feature filtering and standardization were fitted using training data only to prevent data leakage.
+
+Key Findings
+
+The dataset is highly dimensional, with substantially more gene features than samples. Additionally, the cancer classifications are imbalanced, and gene-expression measurements show considerable variation.
+
+These findings support the use of dimensionality reduction and multiple classification algorithms to investigate model performance.
+
+Deliverables
+
+src/exploratory_analysis.py
+
+src/preprocess_data.py
+
+results/cancer_type_distribution.png
+
+results/gene_expression_distribution.png
+
+results/top_variable_genes.png
+
+Milestone 3 Status: Complete
