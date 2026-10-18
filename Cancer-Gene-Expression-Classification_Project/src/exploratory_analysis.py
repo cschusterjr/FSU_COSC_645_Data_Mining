@@ -90,3 +90,45 @@ plt.savefig(output_path_hist, dpi=300)
 plt.close()
 
 print(f"\nHistogram saved to: {output_path_hist}")
+
+
+
+# Analyze variation across gene features
+print("\nGENE VARIABILITY ANALYSIS")
+print("-" * 40)
+
+# Calculate variance for each gene
+gene_variance = data.var(axis=0)
+
+# Identify the 10 genes with the highest variance
+top_variable_genes = gene_variance.nlargest(10)
+
+print("\nTop 10 Most Variable Genes:")
+print(top_variable_genes)
+
+# Count genes with zero variance
+zero_variance_genes = (gene_variance == 0).sum()
+print(f"\nGenes with zero variance: {zero_variance_genes}")
+
+# Create a bar chart of the most variable genes
+plt.figure(figsize=(12, 6))
+
+sns.barplot(
+    x=top_variable_genes.index,
+    y=top_variable_genes.values,
+    color="steelblue"
+)
+
+plt.title("Top 10 Most Variable Genes")
+plt.xlabel("Gene Feature")
+plt.ylabel("Variance")
+plt.xticks(rotation=45, ha="right")
+
+plt.tight_layout()
+
+# Save the visualization
+output_path = results_dir / "top_variable_genes.png"
+plt.savefig(output_path, dpi=300)
+plt.close()
+
+print(f"\nGene variability chart saved to: {output_path}")
