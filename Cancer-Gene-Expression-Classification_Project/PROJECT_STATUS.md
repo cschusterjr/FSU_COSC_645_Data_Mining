@@ -125,3 +125,48 @@ results/gene_expression_distribution.png
 results/top_variable_genes.png
 
 Milestone 3 Status: Complete
+
+
+## Milestone 4: Dimensionality Reduction Using PCA
+
+**Status: Complete**
+
+### PCA Implementation
+
+Principal Component Analysis (PCA) was implemented using scikit-learn to investigate dimensionality reduction in the cancer gene-expression dataset. PCA was fitted using only the training data after constant-feature removal and standardization to prevent data leakage.
+
+The training dataset contained 640 samples and 20,254 features after preprocessing.
+
+### Explained Variance Analysis
+
+The PCA analysis identified the number of principal components required to preserve different percentages of the total variance:
+
+- **90% explained variance:** 310 principal components
+- **95% explained variance:** 434 principal components
+- **99% explained variance:** 583 principal components
+
+These results demonstrate that PCA can substantially reduce the dimensionality of the dataset while retaining most of its variation. For example, using 310 components represents approximately a 98.5% reduction in the number of features compared with the filtered dataset.
+
+### PCA Visualization
+
+A two-dimensional scatter plot was created using the first two principal components, which explained approximately 19.4% of the total variance.
+
+The visualization showed some separation between cancer types. KIRC samples formed a relatively distinct cluster, while COAD samples were concentrated toward the left side of the plot. BRCA, LUAD, and PRAD showed greater overlap, although their distributions differed.
+
+These findings suggest that gene-expression measurements contain patterns associated with cancer type, even when represented using only two principal components.
+
+However, PCA is an unsupervised technique, and the observed separation does not establish classification accuracy. Further evaluation using supervised machine-learning algorithms is required.
+
+### Deliverables
+
+- `src/pca_analysis.py`
+- `results/pca_explained_variance.png`
+- `results/pca_cancer_scatter.png`
+
+### Next Steps
+
+The next milestone will focus on developing machine-learning classification models, including Logistic Regression, K-Nearest Neighbors, Naive Bayes, and Support Vector Machines.
+
+Models will be evaluated using the original filtered gene-expression features and PCA-transformed features to investigate the effect of dimensionality reduction on classification performance.
+
+**Milestone 4 Status: Complete**
