@@ -158,3 +158,68 @@ print(
         zero_division=0
     )
 )
+
+# ---------------------------------------------------------
+# Read the First 10,000 BNC Baby Sentences
+# ---------------------------------------------------------
+
+sentences = []
+
+with open(sentence_file, "r", encoding="utf-8") as file:
+    for line in file:
+        if len(sentences) >= max_sentences:
+            break
+
+        parts = line.strip().split("\t", 1)
+
+        if len(parts) == 2:
+            sentences.append((parts[0], parts[1]))
+
+print(f"\nBNC Baby sentences loaded: {len(sentences)}")
+
+
+# ---------------------------------------------------------
+# Extract Person Names Using SVM
+# ---------------------------------------------------------
+
+def extract_person_names(sentence):
+    words = re.findall(
+        r"[A-Za-z]+(?:['-][A-Za-z]+)*|[^\w\s]",
+        sentence
+    )
+
+    if not words:
+        return []
+
+    features = [
+        extract_word_features(words, i)
+        for i in range(len(words))
+    ]
+
+    X = vectorizer.transform(features)
+    labels = model.predict(X)
+
+    names = []
+    current_name = []
+
+    for word, label in zip(words, labels):
+        if label == "B-PER":
+            if current_name:
+                names.append(" ".join(current_name))
+            current_name = [word]
+
+        elif label == "I-PER":
+            if current_name:
+                current_name.append(word)
+            else:
+                current_name = [word]
+
+        else:
+            if current_name:
+                names.append(" ".join(current_name))
+                current_name = []
+
+    if current_name:
+        names.append(" ".join(current_name))
+
+    return list(dict.fromkeys(names))
