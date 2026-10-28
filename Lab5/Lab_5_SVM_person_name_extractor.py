@@ -2,6 +2,7 @@
 # Person Name Extraction Using Support Vector Machines
 # Charles Schuster
 
+import numpy as np
 import re
 from pathlib import Path
 
@@ -133,6 +134,13 @@ vectorizer = DictVectorizer()
 
 X_train_vectorized = vectorizer.fit_transform(X_train)
 X_test_vectorized = vectorizer.transform(X_test)
+
+# Ensure sparse matrix indices use 32-bit integers.
+X_train_vectorized.indices = X_train_vectorized.indices.astype(np.int32)
+X_train_vectorized.indptr = X_train_vectorized.indptr.astype(np.int32)
+
+X_test_vectorized.indices = X_test_vectorized.indices.astype(np.int32)
+X_test_vectorized.indptr = X_test_vectorized.indptr.astype(np.int32)
 
 
 # ---------------------------------------------------------
