@@ -248,3 +248,22 @@ for sentence_number, name in results[:50]:
     print(f"Sentence {sentence_number}: {name}")
 
 print(f"\nTotal extracted person names: {len(results)}")
+
+
+# ---------------------------------------------------------
+# Save Results
+# ---------------------------------------------------------
+
+with open(output_file, "w", encoding="utf-8") as file:
+    file.write("COSC 645 - Lab 5\n")
+    file.write("Person Name Extraction Using SVM\n")
+    file.write("First 10,000 BNC Baby Sentences\n")
+    file.write("=" * 60 + "\n\n")
+
+    for sentence_number, name in results:
+        file.write(f"Sentence {sentence_number}: {name}\n")
+
+    file.write("\n" + "=" * 60 + "\n")
+    file.write(f"Total extracted person names: {len(results)}\n")
+
+print(f"\nResults saved to: {output_file}")
