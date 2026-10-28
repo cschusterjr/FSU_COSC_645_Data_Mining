@@ -99,3 +99,37 @@ def extract_word_features(words, index):
         features["ending"] = True
 
     return features
+
+
+# ---------------------------------------------------------
+# Prepare Training and Testing Data
+# ---------------------------------------------------------
+
+train_sentences, test_sentences = train_test_split(
+    conll_sentences,
+    test_size=0.20,
+    random_state=645
+)
+
+
+def prepare_features(sentences):
+    X = []
+    y = []
+
+    for sentence in sentences:
+        words = [word for word, tag in sentence]
+
+        for index, (word, tag) in enumerate(sentence):
+            X.append(extract_word_features(words, index))
+            y.append(tag)
+
+    return X, y
+
+
+X_train, y_train = prepare_features(train_sentences)
+X_test, y_test = prepare_features(test_sentences)
+
+vectorizer = DictVectorizer()
+
+X_train_vectorized = vectorizer.fit_transform(X_train)
+X_test_vectorized = vectorizer.transform(X_test)
