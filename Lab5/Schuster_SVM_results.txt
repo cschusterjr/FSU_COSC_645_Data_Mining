@@ -1,0 +1,3496 @@
+COSC 645 - Lab 5
+Person Name Extraction Using SVM
+First 10,000 BNC Baby Sentences
+============================================================
+
+Sentence 1: Roland Franklin
+Sentence 1: Frank Kane
+Sentence 2: FRANK
+Sentence 3: Roland Franklin
+Sentence 8: Mr Franklin
+Sentence 18: James Goldsmith
+Sentence 19: Mr Franklin
+Sentence 19: Ullman
+Sentence 22: Sir James
+Sentence 27: Bond
+Sentence 32: JOHN
+Sentence 46: Anthony
+Sentence 46: Citicorp
+Sentence 50: Andrew Palmer
+Sentence 54: Bill Widdis
+Sentence 65: David Palmer
+Sentence 65: Elton
+Sentence 80: Secretary Samuel
+Sentence 82: Mr
+Sentence 84: Mr
+Sentence 87: Al Checchi
+Sentence 88: Mr
+Sentence 90: Mr
+Sentence 93: Mr
+Sentence 96: Mr
+Sentence 100: Mr
+Sentence 104: Robert Byrd
+Sentence 104: Mr
+Sentence 107: Mr
+Sentence 108: Jon
+Sentence 111: JOHN
+Sentence 113: Lincat
+Sentence 114: Abbey Clocks
+Sentence 117: Abbey
+Sentence 122: Martin Craddock
+Sentence 124: Gregory
+Sentence 133: Murray
+Sentence 142: Mira
+Sentence 145: Caradon
+Sentence 148: Jerry
+Sentence 150: Malcolm Parkinson
+Sentence 151: Mr Parkinson
+Sentence 152: John Kennedy
+Sentence 152: Alan Greensides
+Sentence 158: S
+Sentence 160: Norway
+Sentence 166: Robert Maxwell
+Sentence 167: Mr Maxwell
+Sentence 167: Kissin
+Sentence 169: Magan
+Sentence 169: Alton Irby
+Sentence 180: SARAH HOGG
+Sentence 183: Mr Lawson
+Sentence 186: Nigel Lawson
+Sentence 194: Mr Lawson
+Sentence 196: Chancellor
+Sentence 201: Mr Lawson
+Sentence 206: Mr Lawson
+Sentence 210: Mr Lawson
+Sentence 218: Fred Bergsten
+Sentence 221: Mr Lawson
+Sentence 222: Compagnie
+Sentence 222: Michael Prest
+Sentence 223: MICHAEL
+Sentence 224: Compagnie
+Sentence 227: Le
+Sentence 239: Jacques
+Sentence 244: Andre Levy-Lang
+Sentence 257: Mr Levy-Lang
+Sentence 259: Mr Levy-Lang
+Sentence 267: Mr Levy-Lang
+Sentence 270: Mr
+Sentence 273: Levy-Lang
+Sentence 284: Mr Levy-Lang
+Sentence 289: Loan
+Sentence 291: MICHAEL
+Sentence 305: MICHAEL
+Sentence 311: Richard Howell
+Sentence 328: Sri
+Sentence 344: Mr Howell
+Sentence 346: Mr Howell
+Sentence 354: Sri
+Sentence 390: Hill Samuel
+Sentence 391: Christopher Baker
+Sentence 391: Hill Samuel
+Sentence 392: Sir Derek Alun-Jones
+Sentence 397: Sir Derek
+Sentence 397: Hill
+Sentence 399: Hill
+Sentence 403: Mr Baker
+Sentence 408: Lawson
+Sentence 410: Chancellor Nigel Lawson
+Sentence 415: Bill Martin
+Sentence 419: Martin
+Sentence 425: JOHN
+Sentence 426: DAVID ANDERSON
+Sentence 428: Mr
+Sentence 429: Mr
+Sentence 448: Sir Ron Brierley
+Sentence 452: Richard Branson
+Sentence 453: Mary Fagan
+Sentence 454: Warner
+Sentence 457: Virgin
+Sentence 470: NEIL
+Sentence 472: Ron Todd
+Sentence 473: Mr Kinnock
+Sentence 474: Prime
+Sentence 482: Mr Kinnock
+Sentence 484: Tony Benn
+Sentence 484: Eric Heffer
+Sentence 484: Dennis
+Sentence 484: Ken Livingstone
+Sentence 485: Scargill
+Sentence 486: Kinnock
+Sentence 491: Mr Kinnock
+Sentence 495: Mr Kinnock
+Sentence 496: Mr Kinnock
+Sentence 505: James Leotard
+Sentence 550: Mark
+Sentence 563: Prime
+Sentence 564: Prime
+Sentence 567: Prime
+Sentence 568: Runcie
+Sentence 570: Runcie
+Sentence 574: Andreas Papandreou
+Sentence 575: Runcie
+Sentence 580: Prime
+Sentence 581: Runcie
+Sentence 586: Peter Wilby
+Sentence 594: Vice
+Sentence 595: Vice
+Sentence 597: Vice
+Sentence 602: Vice
+Sentence 606: Sector
+Sentence 610: DAVID
+Sentence 626: JOHN
+Sentence 650: J
+Sentence 651: Sarah Helm
+Sentence 662: Cardinal
+Sentence 665: Cardinal Hume
+Sentence 665: George Basil Hume
+Sentence 667: ALAN
+Sentence 668: William
+Sentence 675: Mr
+Sentence 682: Mr
+Sentence 691: Mr
+Sentence 694: Marcel
+Sentence 701: Sir
+Sentence 702: Charles Darwin
+Sentence 704: R
+Sentence 704: SMITH
+Sentence 709: Anthony Storr
+Sentence 711: Franz Kafka
+Sentence 711: Winston Churchill
+Sentence 713: Anthony Storr
+Sentence 715: Winston
+Sentence 721: Churchill
+Sentence 725: Churchill
+Sentence 728: Franz Kafka
+Sentence 730: Anthony Storr
+Sentence 736: Churchill
+Sentence 738: Giles
+Sentence 740: S
+Sentence 742: Wilson
+Sentence 744: Wilson
+Sentence 750: Mr
+Sentence 753: Mr Kinnock
+Sentence 755: Mr
+Sentence 755: Gorbachev
+Sentence 757: John Smith
+Sentence 757: Gordon Brown
+Sentence 757: Labour
+Sentence 761: Mr Kinnock
+Sentence 767: Mr
+Sentence 777: Mr
+Sentence 781: Hayek
+Sentence 781: Margaret Thatcher
+Sentence 782: Paul
+Sentence 782: Prime
+Sentence 806: Erasmus
+Sentence 806: Van Gogh
+Sentence 808: Thomas More
+Sentence 813: Dostoevsky
+Sentence 818: Einstein
+Sentence 818: Stravinsky
+Sentence 824: Bacon
+Sentence 830: Thomas Aquinas
+Sentence 830: Alighieri
+Sentence 830: Geoffrey Chaucer
+Sentence 830: Joan
+Sentence 830: Christopher Columbus
+Sentence 830: Johann
+Sentence 830: Vinci
+Sentence 830: Erasmus
+Sentence 830: Machiavelli
+Sentence 830: de
+Sentence 830: William Shakespeare
+Sentence 830: Francis Bacon
+Sentence 830: Galilei
+Sentence 830: John Locke
+Sentence 830: Van Rijn
+Sentence 830: Bach
+Sentence 830: Wolfgang
+Sentence 830: Johnson
+Sentence 830: Amadeus
+Sentence 830: Rousseau
+Sentence 830: Adam Smith
+Sentence 830: Jane
+Sentence 830: Ludwig Van Beethoven
+Sentence 830: Paul Cezanne
+Sentence 830: Darwin
+Sentence 830: Dickens
+Sentence 830: Vincent van Gogh
+Sentence 830: George Gordon
+Sentence 830: Byron
+Sentence 830: Victor Hugo
+Sentence 830: Thomas Robert Malthus
+Sentence 830: Karl
+Sentence 830: Tolstoy
+Sentence 830: Richard Wagner
+Sentence 830: Albert Einstein
+Sentence 830: Freud
+Sentence 830: Hitler
+Sentence 830: James Joyce
+Sentence 830: Stravinsky
+Sentence 831: Andrew Higgins
+Sentence 832: ANDREW
+Sentence 840: Chen Xitong
+Sentence 841: Deng
+Sentence 848: Mao
+Sentence 859: Mao
+Sentence 869: Deng
+Sentence 871: godfather
+Sentence 871: Chen Yun
+Sentence 873: Hall
+Sentence 874: Li Peng
+Sentence 874: Prime
+Sentence 875: Mr
+Sentence 875: Li
+Sentence 880: Zhang Fuxin
+Sentence 881: Zhang
+Sentence 884: Jiang Zemin
+Sentence 886: Mao
+Sentence 888: Mao
+Sentence 889: Mao
+Sentence 893: Mao
+Sentence 894: Mao
+Sentence 897: Mao
+Sentence 902: Li Peng
+Sentence 910: DOWDEN
+Sentence 913: Addis
+Sentence 916: Dawa
+Sentence 922: Varrenikov
+Sentence 924: President Mengistu
+Sentence 926: President
+Sentence 938: Addis
+Sentence 938: President
+Sentence 939: President
+Sentence 954: Nelson Mandela
+Sentence 954: President FW
+Sentence 954: Klerk
+Sentence 955: Mr
+Sentence 957: Klerk
+Sentence 961: Mr
+Sentence 961: Winnie
+Sentence 963: King
+Sentence 963: Dalindyebo
+Sentence 969: Holomisa
+Sentence 975: Mr
+Sentence 976: Mrs
+Sentence 977: Mr
+Sentence 1009: Lalitha Vijayam
+Sentence 1011: Viceroy
+Sentence 1013: Salim Ali
+Sentence 1022: Vijayan
+Sentence 1030: Vijayan
+Sentence 1039: AHMED RASHID
+Sentence 1045: Salang
+Sentence 1047: General Mohammed Hakim
+Sentence 1048: Hakim
+Sentence 1051: Hakim
+Sentence 1052: Hakim
+Sentence 1055: President Najibullah
+Sentence 1060: Suleman Laeq
+Sentence 1065: Claiborne Pell
+Sentence 1066: Mr Pell
+Sentence 1069: S
+Sentence 1070: Mao
+Sentence 1070: Deng
+Sentence 1078: Mr Deng
+Sentence 1081: Prime
+Sentence 1081: Li Peng
+Sentence 1085: Mao
+Sentence 1087: Szeto Wah
+Sentence 1092: Ieng
+Sentence 1094: Dien Del
+Sentence 1098: Heng
+Sentence 1100: Abdul Gaffar
+Sentence 1100: Ak Sutsakorn
+Sentence 1101: Moe Kyaw Thu
+Sentence 1101: Gyi
+Sentence 1101: Nyi Nyi
+Sentence 1115: Moe Kyaw Thu
+Sentence 1115: Nyi Nyi
+Sentence 1118: PRESIDENT Corazon Aquino
+Sentence 1118: Ferdinand Marcos
+Sentence 1119: Salvador Laurel
+Sentence 1119: Mrs
+Sentence 1120: Mrs
+Sentence 1122: Mrs
+Sentence 1126: Mr Laurel
+Sentence 1128: Mr Laurel
+Sentence 1134: Mubarak
+Sentence 1135: RICHARDS
+Sentence 1137: President Mubarak
+Sentence 1141: Mr Mubarak
+Sentence 1142: Prime
+Sentence 1142: Yitzak Shamir
+Sentence 1144: Yitzhak Rabin
+Sentence 1144: Mr Mubarak
+Sentence 1144: Mr
+Sentence 1144: Mr Peres
+Sentence 1144: President Mubarak
+Sentence 1144: James Baker
+Sentence 1147: Mr Rabin
+Sentence 1150: Mr Shamir
+Sentence 1163: al-Feisel
+Sentence 1164: Michel
+Sentence 1166: Saeb Salam
+Sentence 1167: Mr Salam
+Sentence 1167: Muslim
+Sentence 1175: LYONS
+Sentence 1175: Yvonne Brigden
+Sentence 1176: Boris
+Sentence 1178: Boris Yeltsin
+Sentence 1181: AHMED RASHID
+Sentence 1182: Ahmed Rashid
+Sentence 1186: AHMED RASHID
+Sentence 1187: Joshua Nkomo
+Sentence 1187: President Robert Mugabe
+Sentence 1190: AHMED RASHID
+Sentence 1194: AHMED RASHID
+Sentence 1195: Prime
+Sentence 1195: Toshiki Kaifu
+Sentence 1196: Mr Kaifu
+Sentence 1198: AHMED RASHID
+Sentence 1200: Nicholas Barrington
+Sentence 1203: AHMED RASHID
+Sentence 1204: Charles
+Sentence 1204: Gaulle
+Sentence 1206: AHMED RASHID
+Sentence 1210: JOHN
+Sentence 1211: Wimpie
+Sentence 1211: Klerk
+Sentence 1211: President FW
+Sentence 1211: John Bulloch
+Sentence 1212: Mbeki
+Sentence 1212: Oliver Tambo
+Sentence 1213: Viljoen
+Sentence 1216: JOHN
+Sentence 1217: Chancellor
+Sentence 1217: Kohl
+Sentence 1225: Nicolae Ceausescu
+Sentence 1225: Milos
+Sentence 1226: Yao Yilin
+Sentence 1227: Mikhail Gorbachev
+Sentence 1228: President
+Sentence 1228: Jaruzelski
+Sentence 1234: Grosz
+Sentence 1236: Mr Grosz
+Sentence 1236: Kadar
+Sentence 1241: President Roh Tae
+Sentence 1243: Dmitri Yazov
+Sentence 1243: Dick Cheney
+Sentence 1252: President Quett
+Sentence 1258: Hans-Dietrich Genscher
+Sentence 1260: Mr
+Sentence 1260: Fischer
+Sentence 1268: Lang
+Sentence 1268: Syne
+Sentence 1289: Yan
+Sentence 1312: Hans
+Sentence 1312: Genscher
+Sentence 1312: Eduard Shevardnadze
+Sentence 1315: I
+Sentence 1320: President
+Sentence 1320: Branko
+Sentence 1322: Srdan Darmanovic
+Sentence 1325: President
+Sentence 1325: John Kennedy
+Sentence 1328: Radoman
+Sentence 1329: King Alexander
+Sentence 1330: Nicholas
+Sentence 1332: Alexandra
+Sentence 1333: Nicholas
+Sentence 1336: Nicholas
+Sentence 1336: Alexander
+Sentence 1338: SHERIDAN
+Sentence 1339: Byzantine
+Sentence 1342: Giulio Andreotti
+Sentence 1342: Prime
+Sentence 1343: De Mita
+Sentence 1344: Mr Andreotti
+Sentence 1345: Cardinal
+Sentence 1345: Poletti
+Sentence 1346: Sabato
+Sentence 1346: Andreotti
+Sentence 1351: Romano
+Sentence 1352: Pietro Giubilo
+Sentence 1353: Andreotti
+Sentence 1353: Vittorio
+Sentence 1354: Mr
+Sentence 1356: Mr De Mita
+Sentence 1356: Mr
+Sentence 1357: Sabato
+Sentence 1359: Mr Andreotti
+Sentence 1360: Prime
+Sentence 1362: Bush
+Sentence 1364: President Bush
+Sentence 1364: President Reagan
+Sentence 1365: Mr Bush
+Sentence 1366: Senator George Mitchell
+Sentence 1368: Mr Bush
+Sentence 1382: Mr
+Sentence 1387: JOHN
+Sentence 1388: John Lichfield
+Sentence 1398: JOHN
+Sentence 1400: President
+Sentence 1402: Nicholas Barne
+Sentence 1404: Golspie
+Sentence 1405: Richard Aylard
+Sentence 1406: Patron
+Sentence 1406: Lymington
+Sentence 1406: Mr
+Sentence 1406: John Guillaume
+Sentence 1408: Patron
+Sentence 1408: Hill
+Sentence 1409: Adams
+Sentence 1409: President
+Sentence 1409: James '
+Sentence 1410: Vice
+Sentence 1413: JOHN
+Sentence 1414: Maj-Gen Sir Christopher
+Sentence 1414: Secretary
+Sentence 1414: Sir John Riddell
+Sentence 1415: Mr
+Sentence 1416: Sir Derek Reffell
+Sentence 1416: Sir
+Sentence 1416: Peter Terry
+Sentence 1417: Mr Christopher Starns
+Sentence 1418: Mr
+Sentence 1418: Angus Stewart
+Sentence 1418: Estate
+Sentence 1418: Iain Mark
+Sentence 1419: Mr Oscar Henry Colburn
+Sentence 1419: Mr
+Sentence 1419: John Nigel
+Sentence 1419: James
+Sentence 1421: JOHN
+Sentence 1422: Alkmaar
+Sentence 1422: Brigham Young
+Sentence 1422: Queen Mary
+Sentence 1425: Jean-Louis
+Sentence 1427: Tixier-Vignancour
+Sentence 1427: Raoul
+Sentence 1437: Algerie
+Sentence 1439: Lt Degueldre
+Sentence 1439: Jean-Marie Bastien-Thiry
+Sentence 1443: Prime Minister Michel Debre
+Sentence 1444: Prime
+Sentence 1446: Michel Debre
+Sentence 1448: Prime
+Sentence 1454: President
+Sentence 1457: Jean Lecanuet
+Sentence 1461: White
+Sentence 1462: Jean Marie Le Pen
+Sentence 1462: Jacques
+Sentence 1462: Klaus Barbie
+Sentence 1465: Virgil
+Sentence 1466: PETER DICKINSON
+Sentence 1469: Stein
+Sentence 1469: Erik Satie
+Sentence 1471: Nadia Boulanger
+Sentence 1471: Stein
+Sentence 1477: Frederick
+Sentence 1479: Aaron
+Sentence 1481: Aaron
+Sentence 1483: Stein
+Sentence 1489: Herald
+Sentence 1490: Virgil
+Sentence 1490: Virgil Thomson
+Sentence 1498: John Cage
+Sentence 1500: Stein
+Sentence 1502: Stein
+Sentence 1502: William Blake
+Sentence 1502: Edward
+Sentence 1510: Thomas Keller
+Sentence 1513: President
+Sentence 1515: Gaston Mullegg
+Sentence 1515: President
+Sentence 1517: President
+Sentence 1518: Zurich
+Sentence 1520: Eduard
+Sentence 1521: Keller
+Sentence 1523: Keller
+Sentence 1525: President
+Sentence 1529: Keller
+Sentence 1532: Henley
+Sentence 1533: President
+Sentence 1535: Keller
+Sentence 1535: President
+Sentence 1541: Donaldson
+Sentence 1542: Legal
+Sentence 1543: Donaldson
+Sentence 1544: Chancellor
+Sentence 1544: Mackay
+Sentence 1544: Donaldson
+Sentence 1545: Donaldson
+Sentence 1545: Bill
+Sentence 1551: Donaldson
+Sentence 1552: Donaldson
+Sentence 1554: Chancellor
+Sentence 1554: Donaldson
+Sentence 1559: Donaldson
+Sentence 1561: Donaldson
+Sentence 1562: Desmond Fennell
+Sentence 1562: Donaldson
+Sentence 1563: Roger Henderson
+Sentence 1563: Donaldson
+Sentence 1564: John Hayes
+Sentence 1567: Donaldson
+Sentence 1569: Legal
+Sentence 1572: George Pulman
+Sentence 1574: Mr Pulman
+Sentence 1576: Mr
+Sentence 1578: John
+Sentence 1580: John Hayes
+Sentence 1583: Mr Hayes
+Sentence 1585: Legal
+Sentence 1586: Donaldson
+Sentence 1588: Donaldson
+Sentence 1594: Donaldson
+Sentence 1599: Donaldson
+Sentence 1600: Chancellor
+Sentence 1600: Mackay
+Sentence 1601: Donaldson
+Sentence 1601: Mackay
+Sentence 1601: White
+Sentence 1605: Legal
+Sentence 1607: Richard Williams
+Sentence 1614: Mr Williams
+Sentence 1616: Legal
+Sentence 1617: Danya
+Sentence 1625: Legal
+Sentence 1626: David Cocks
+Sentence 1628: Mr
+Sentence 1630: Mr
+Sentence 1634: Mr
+Sentence 1639: Legal
+Sentence 1640: Fair
+Sentence 1645: William Tillyer
+Sentence 1645: Bernard Jacobson
+Sentence 1648: Helen Frankenthaler
+Sentence 1651: Kark Weschke
+Sentence 1653: Scar
+Sentence 1653: James Ward
+Sentence 1657: Len Tabner
+Sentence 1661: David Brown
+Sentence 1661: William McTaggart
+Sentence 1665: Roderick Carmichael
+Sentence 1671: JAMES
+Sentence 1675: Jeff Rooker
+Sentence 1678: Mr Rooker
+Sentence 1678: Perry
+Sentence 1680: Mr Rooker
+Sentence 1684: Mr Rooker
+Sentence 1687: Chater
+Sentence 1695: Peter Hennessy
+Sentence 1695: Angus
+Sentence 1696: PETER HENNESSY
+Sentence 1697: Sir Angus
+Sentence 1697: Sir Robin Ibbs
+Sentence 1697: Prime
+Sentence 1699: Sir Robin
+Sentence 1701: Sir Angus
+Sentence 1703: Sir Angus
+Sentence 1705: Peter Kemp
+Sentence 1706: Rayner
+Sentence 1706: Prime
+Sentence 1706: Sir Angus
+Sentence 1713: Margaret Thatcher
+Sentence 1716: Sir Angus
+Sentence 1718: Sir Angus
+Sentence 1718: Prime
+Sentence 1724: Prime
+Sentence 1734: Sir
+Sentence 1746: Older
+Sentence 1763: Anthony Hazell
+Sentence 1770: Nicholas Ridley
+Sentence 1774: Mr Ridley
+Sentence 1790: Fred Smithies
+Sentence 1792: Mr
+Sentence 1808: Hackney
+Sentence 1810: Mike Loosley
+Sentence 1813: Embryo Bill
+Sentence 1817: Bowman
+Sentence 1820: Bill
+Sentence 1823: Diane
+Sentence 1825: Bill
+Sentence 1826: Ann Winterton
+Sentence 1829: Winterton
+Sentence 1831: Bill
+Sentence 1833: Winterton
+Sentence 1833: Alton Bill
+Sentence 1834: Bill
+Sentence 1836: Bill
+Sentence 1838: Bowman
+Sentence 1845: Lynn
+Sentence 1862: Dearer
+Sentence 1867: Walter Kent
+Sentence 1867: White
+Sentence 1874: White
+Sentence 1875: Murderer
+Sentence 1878: Richard Dennick
+Sentence 1878: Chester
+Sentence 1901: Chess
+Sentence 1903: Jan Timman
+Sentence 1904: Karpov
+Sentence 1904: Yusupov
+Sentence 1905: Yusupov
+Sentence 1908: Karpov
+Sentence 1909: Garry Kasparov
+Sentence 1910: Karpov
+Sentence 1911: Karpov
+Sentence 1912: Artur Yusupov
+Sentence 1914: Yusupov
+Sentence 1924: Garry Kasparov
+Sentence 1926: Korchnoi
+Sentence 1928: Runcie
+Sentence 1929: JAMES
+Sentence 1931: Dr Robert Runcie
+Sentence 1932: Runcie
+Sentence 1932: Downing
+Sentence 1934: Jesus
+Sentence 1938: Jesus
+Sentence 1947: Runcie
+Sentence 1951: Frank Field
+Sentence 1951: Dr Runcie
+Sentence 1952: Peter Bottomley
+Sentence 1953: Dr Runcie
+Sentence 1958: JAMES
+Sentence 1964: John Hoyle
+Sentence 1981: Salman Rushdie
+Sentence 1982: Ahmed Deedat
+Sentence 1982: Albert Hall
+Sentence 1982: Mr Rushdie
+Sentence 1982: Margaret Thatcher
+Sentence 1983: Mr
+Sentence 1989: Mr Rushdie
+Sentence 1991: Worse
+Sentence 1993: Sheikh
+Sentence 1995: Ali
+Sentence 2011: Clarke
+Sentence 2014: Kenneth Clarke
+Sentence 2015: Mr Clarke
+Sentence 2021: Mr
+Sentence 2021: Clarke
+Sentence 2022: Mr Clarke
+Sentence 2023: Sir Geoffrey Howe
+Sentence 2023: John
+Sentence 2024: Mr Clarke
+Sentence 2028: Mr Clarke
+Sentence 2032: Mr
+Sentence 2032: Clarke
+Sentence 2048: Wilson
+Sentence 2048: George Brown
+Sentence 2076: Robin Cook
+Sentence 2079: Mr Cook
+Sentence 2080: Mr Cook
+Sentence 2083: Mr Cook
+Sentence 2084: Mr Cook
+Sentence 2087: Mr Cook
+Sentence 2087: Ken Livingstone
+Sentence 2087: John
+Sentence 2088: Mr Livingstone
+Sentence 2089: Neil Kinnock
+Sentence 2089: Roy Hattersley
+Sentence 2090: Mr Hattersley
+Sentence 2091: Mr Kinnock
+Sentence 2093: Mr Kinnock
+Sentence 2095: Mr Kinnock
+Sentence 2102: Mr Scargill
+Sentence 2104: Mr Scargill
+Sentence 2105: Allen McKay
+Sentence 2106: Mr McKay
+Sentence 2107: Mr Scargill
+Sentence 2107: Mr Kinnock
+Sentence 2108: Mr Scargill
+Sentence 2112: JOHN
+Sentence 2113: Colin
+Sentence 2114: Neil Kinnock
+Sentence 2114: Mr Prescott
+Sentence 2116: Clapham
+Sentence 2116: Mr Prescott
+Sentence 2119: Nicholas Soames
+Sentence 2119: Giovanni
+Sentence 2120: Mr Prescott
+Sentence 2121: Gould
+Sentence 2121: John Smith
+Sentence 2122: Mr
+Sentence 2125: Mr Prescott
+Sentence 2125: Roy Hattersley
+Sentence 2125: Neil Kinnock
+Sentence 2127: Mr Kinnock
+Sentence 2127: Mr
+Sentence 2128: Mr Prescott
+Sentence 2129: Mr
+Sentence 2135: Larry
+Sentence 2139: Huckfield
+Sentence 2141: Gorbachev
+Sentence 2143: Ken Slater
+Sentence 2145: Florrie
+Sentence 2146: Martin Smith
+Sentence 2146: Kemptown
+Sentence 2147: Mr Whitty
+Sentence 2151: S
+Sentence 2157: Mr
+Sentence 2159: Bill Morris
+Sentence 2160: Mr Kinnock
+Sentence 2160: Roy Hattersley
+Sentence 2162: John Edmonds
+Sentence 2162: Kinnock
+Sentence 2167: JOHN
+Sentence 2169: Tony Benn
+Sentence 2169: Ken Livingstone
+Sentence 2169: Dennis
+Sentence 2171: Mr Benn
+Sentence 2176: Mr
+Sentence 2177: Neil Kinnock
+Sentence 2177: Bryan Gould
+Sentence 2180: Mr Livingstone
+Sentence 2187: Mr
+Sentence 2189: Mr
+Sentence 2189: Neil Kinnock
+Sentence 2191: John
+Sentence 2192: John Wakeham
+Sentence 2193: Chris Patten
+Sentence 2194: Prime Minister
+Sentence 2195: Jim White
+Sentence 2196: JIM
+Sentence 2198: Bunny
+Sentence 2204: Bend
+Sentence 2209: Chris Waddle
+Sentence 2222: Jim White
+Sentence 2223: JIM
+Sentence 2224: Sir George Robey
+Sentence 2231: Daisy Chainsaw
+Sentence 2231: Benny Profane
+Sentence 2231: Jackson
+Sentence 2233: John Belushi
+Sentence 2234: Boogie
+Sentence 2240: King
+Sentence 2240: Fulham
+Sentence 2245: Kennington
+Sentence 2246: Johnny
+Sentence 2246: Johnny Marr
+Sentence 2247: W
+Sentence 2250: Kenton
+Sentence 2251: Roy Wood
+Sentence 2253: Steve Marriott
+Sentence 2253: Hutton
+Sentence 2258: W
+Sentence 2261: Piggott
+Sentence 2264: Dublin Castle
+Sentence 2266: Fulham
+Sentence 2266: W
+Sentence 2268: Moon
+Sentence 2268: Richmond
+Sentence 2269: King
+Sentence 2269: Fulham
+Sentence 2274: Sir George Robey
+Sentence 2277: ROCK
+Sentence 2277: Johnson
+Sentence 2278: JIM
+Sentence 2279: Wilko Johnson
+Sentence 2280: Chuck
+Sentence 2281: Norman Watt Roy
+Sentence 2281: Ian Dury
+Sentence 2281: Barry Norman
+Sentence 2286: George Michael
+Sentence 2289: Janet Ahlberg
+Sentence 2289: Dodd
+Sentence 2290: DODD
+Sentence 2296: Postman
+Sentence 2296: Bill
+Sentence 2300: Bye
+Sentence 2306: Ahlberg
+Sentence 2307: Bye
+Sentence 2307: Janet Ahlberg
+Sentence 2314: Janet
+Sentence 2317: Allan Ahlberg
+Sentence 2320: Jessica
+Sentence 2320: Roald
+Sentence 2341: Ahlberg
+Sentence 2343: Helen Womack
+Sentence 2349: Khudiakova
+Sentence 2350: Ms Khudiakova
+Sentence 2355: Varvara Stepanova
+Sentence 2355: Mayakovsky
+Sentence 2356: Ms Khudiakova
+Sentence 2376: Ms Khudiakova
+Sentence 2376: Modi
+Sentence 2379: Mr
+Sentence 2380: Wolmar
+Sentence 2384: Ashley Dobbs
+Sentence 2386: Dobbs
+Sentence 2389: Mr Dobbs
+Sentence 2396: Albrechsten
+Sentence 2406: Mr Dobbs
+Sentence 2413: Mr Dobbs
+Sentence 2414: Albrechsten
+Sentence 2418: Mr Dobbs
+Sentence 2424: Dobbs
+Sentence 2435: Albrechsten
+Sentence 2438: Mr Dobbs
+Sentence 2439: Chris Barnard
+Sentence 2440: CHRIS
+Sentence 2448: Frans
+Sentence 2449: Nikkie
+Sentence 2455: Anne Keddy
+Sentence 2455: Robert
+Sentence 2455: Michael Raleigh
+Sentence 2461: Keddy
+Sentence 2469: Alpha
+Sentence 2481: Chris Barnard
+Sentence 2482: David Spark
+Sentence 2483: DAVID
+Sentence 2506: Ken Mills
+Sentence 2565: Martyn Kelly
+Sentence 2579: Bernard Ulrich
+Sentence 2581: Bernard Prinz
+Sentence 2582: Fink
+Sentence 2587: Keith Brown
+Sentence 2587: Mike Roberts
+Sentence 2589: Mike Roberts
+Sentence 2602: Mike Roberts
+Sentence 2605: Roberts
+Sentence 2615: Mike Roberts
+Sentence 2620: Graham Gooch
+Sentence 2620: Mohammed Azharuddin
+Sentence 2625: Gooch
+Sentence 2626: Ian Botham
+Sentence 2626: Gooch
+Sentence 2627: Gooch
+Sentence 2629: Ravi Shastri
+Sentence 2629: Gooch
+Sentence 2630: Ray Illingworth
+Sentence 2633: Shastri
+Sentence 2633: Sidhu
+Sentence 2633: Gooch
+Sentence 2634: Devon Malcolm
+Sentence 2634: Angus
+Sentence 2635: Malcolm
+Sentence 2636: Sidhu
+Sentence 2637: Malcolm
+Sentence 2639: John Morris
+Sentence 2640: Morris
+Sentence 2641: Chris Lewis
+Sentence 2641: Malcolm
+Sentence 2642: Lewis
+Sentence 2644: Shastri
+Sentence 2644: Gooch
+Sentence 2644: Jack Russell
+Sentence 2645: Dilip
+Sentence 2645: Shastri
+Sentence 2646: Gooch
+Sentence 2646: Eddie
+Sentence 2647: Shastri
+Sentence 2648: Malcolm
+Sentence 2648: Gooch
+Sentence 2653: Malcolm
+Sentence 2656: Sachin
+Sentence 2656: Bedi
+Sentence 2658: Dickie
+Sentence 2661: Morris
+Sentence 2662: Lewis
+Sentence 2663: Kapil Dev
+Sentence 2665: Graham Gooch
+Sentence 2671: Berger
+Sentence 2683: Senna
+Sentence 2684: Berger
+Sentence 2684: Senna
+Sentence 2685: Berger
+Sentence 2699: Honda
+Sentence 2700: Jean Alesi
+Sentence 2701: Alesi
+Sentence 2701: Martin Brundle
+Sentence 2703: Derek Warwick
+Sentence 2703: Nelson Piquet
+Sentence 2709: Dunhill
+Sentence 2710: Mark Calcavecchia
+Sentence 2710: Tom
+Sentence 2713: Ryder
+Sentence 2715: Ryder
+Sentence 2718: Hajime Meshiai
+Sentence 2719: Naomichi Ozaki
+Sentence 2719: Koichi Suzuki
+Sentence 2727: Ozaki
+Sentence 2733: Ryder
+Sentence 2734: Bob Hope
+Sentence 2739: Mark James
+Sentence 2742: James '
+Sentence 2743: James '
+Sentence 2744: Jnr
+Sentence 2746: Rugby
+Sentence 2746: Richards
+Sentence 2747: STEVE
+Sentence 2748: Dean Richards
+Sentence 2748: Fiji
+Sentence 2749: Richards
+Sentence 2750: Geoff
+Sentence 2751: Wade Dooley
+Sentence 2751: Paul Rendall
+Sentence 2752: Hill
+Sentence 2752: Moore
+Sentence 2752: Linnett
+Sentence 2753: Bailey
+Sentence 2754: Chris Oti
+Sentence 2754: Fiji
+Sentence 2755: Mike
+Sentence 2762: Terry Vaux
+Sentence 2763: David Young
+Sentence 2764: Jeff Probyn
+Sentence 2765: Lenihan
+Sentence 2766: Cronin
+Sentence 2766: Rob Andrew
+Sentence 2768: STEVE
+Sentence 2770: Adrian Titcombe
+Sentence 2771: Kenneth McKay
+Sentence 2775: Kevin Drinkell
+Sentence 2776: Peter Davenport
+Sentence 2779: Eric Vanderaerden
+Sentence 2779: Sean Kelly
+Sentence 2782: Thomas Wegmuller
+Sentence 2783: Vanderaerden
+Sentence 2786: Gap
+Sentence 2786: Gary Baker
+Sentence 2789: Rugby
+Sentence 2790: PAUL WILSON
+Sentence 2791: Alex Murphy
+Sentence 2792: Tony
+Sentence 2792: Graham
+Sentence 2794: Gary Freeman
+Sentence 2794: Roy Haggerty
+Sentence 2795: David Watson
+Sentence 2795: Alan Hunte
+Sentence 2796: Shelford
+Sentence 2796: Mark Elia
+Sentence 2797: Stuart
+Sentence 2798: David Tanner
+Sentence 2798: Phil
+Sentence 2798: Mark Bailey
+Sentence 2799: Paul Forber
+Sentence 2801: Meninga
+Sentence 2804: PETER ELLIOTT
+Sentence 2805: Steve Cram
+Sentence 2809: Abdi Bile
+Sentence 2811: Mark Rowland
+Sentence 2816: Bev Nicholson
+Sentence 2817: Rugby
+Sentence 2818: STEVE
+Sentence 2823: XV
+Sentence 2824: Brian Nicholas
+Sentence 2827: John Ryan
+Sentence 2830: Nicholas
+Sentence 2838: Moseley
+Sentence 2839: Ryan
+Sentence 2843: Robert Jones
+Sentence 2844: Mike Budd
+Sentence 2844: Jeremy Cooper
+Sentence 2844: Williams
+Sentence 2844: Kevin Ellis
+Sentence 2845: Robert Jones
+Sentence 2846: Bevan
+Sentence 2846: Aled Williams
+Sentence 2848: Ryan
+Sentence 2850: Rugby
+Sentence 2853: Kevin Phillips
+Sentence 2857: Jack Rowell
+Sentence 2864: Toulon
+Sentence 2866: Swift
+Sentence 2866: Richard Lee
+Sentence 2866: Jonathan Callard
+Sentence 2867: Allan Bateman
+Sentence 2868: Rugby
+Sentence 2874: Mark Bailey
+Sentence 2877: Ian Snook
+Sentence 2878: Grant Patterson
+Sentence 2881: Rosslyn
+Sentence 2882: Luck
+Sentence 2883: Simon Smith
+Sentence 2884: Rugby
+Sentence 2886: Llanelli
+Sentence 2886: Steve Bowling
+Sentence 2887: Llanelli
+Sentence 2891: Llanelli
+Sentence 2895: Wayne Richardson
+Sentence 2895: Llanelli
+Sentence 2895: Andrew Lamerton
+Sentence 2897: Tony
+Sentence 2898: Richardson
+Sentence 2898: Rory
+Sentence 2899: John Liley
+Sentence 2899: Llanelli
+Sentence 2900: Rugby
+Sentence 2904: Tony
+Sentence 2905: Rodgers
+Sentence 2906: Rob Wainright
+Sentence 2906: John Wilby
+Sentence 2908: Simon Holmes
+Sentence 2908: John
+Sentence 2909: Andrew Davies
+Sentence 2909: Paul Reed
+Sentence 2909: Alan Buzza
+Sentence 2910: Rugby
+Sentence 2915: Gary Callander
+Sentence 2915: John Jeffrey
+Sentence 2916: Brian Bellingham
+Sentence 2916: Steve Autogavea
+Sentence 2917: Sean Lineen
+Sentence 2920: Cameron
+Sentence 2920: Gary
+Sentence 2920: Peter Steven
+Sentence 2923: Rugby
+Sentence 2924: PAUL
+Sentence 2925: Durham
+Sentence 2926: Durham
+Sentence 2928: John Howe
+Sentence 2928: John Dixon
+Sentence 2928: John Orwin
+Sentence 2928: Steve Harris
+Sentence 2931: Peter Buckton
+Sentence 2931: Simon
+Sentence 2932: Simon Irving
+Sentence 2932: Paul Johnson
+Sentence 2932: Dave Cooke
+Sentence 2935: Halls
+Sentence 2936: Dale Roberts
+Sentence 2937: Kevin Cadle
+Sentence 2938: Dave Gardner
+Sentence 2939: Chris Kearney
+Sentence 2939: Jason Fogerty
+Sentence 2940: Tony Balogun
+Sentence 2941: Kevin
+Sentence 2941: Jerry Johnson
+Sentence 2942: Roberts
+Sentence 2942: Paul James
+Sentence 2942: Bracknell
+Sentence 2948: Hawthorn
+Sentence 2949: Gary Ablett
+Sentence 2950: Malcolm
+Sentence 2956: Bobby Campbell
+Sentence 2956: Theo Foley
+Sentence 2959: Bobby Robson
+Sentence 2971: Tony Adams
+Sentence 2971: Alan Smith
+Sentence 2971: David Rocastle
+Sentence 2971: Dave Beasant
+Sentence 2974: Graham
+Sentence 2977: Paul Davis
+Sentence 2979: Davis
+Sentence 2979: Bobby Robson
+Sentence 2979: Bryan Robson
+Sentence 2980: Michael Thomas
+Sentence 2982: Mike Hazard
+Sentence 2984: Kerry
+Sentence 2985: Campbell
+Sentence 2986: Tony Dorigo
+Sentence 2986: Nigel Winterburn
+Sentence 2987: David Rocastle
+Sentence 2988: Bobby Robson
+Sentence 2988: Brian Clough
+Sentence 2990: Graham Roberts
+Sentence 2990: Perry
+Sentence 2990: Steve Clarke
+Sentence 2994: Queen
+Sentence 2995: Lane
+Sentence 2995: Gary Lineker
+Sentence 2995: Gary
+Sentence 2996: Francis
+Sentence 2996: Andy Sinton
+Sentence 2998: Francis
+Sentence 2999: Terry
+Sentence 3004: David Bardsley
+Sentence 3005: Mark
+Sentence 3005: Paul Stewart
+Sentence 3005: Tony
+Sentence 3007: Frank McAvennie
+Sentence 3007: Harford
+Sentence 3010: Paul Parker
+Sentence 3010: Alan McDonald
+Sentence 3010: David Seaman
+Sentence 3013: Bardsley
+Sentence 3013: Francis
+Sentence 3015: Nayim
+Sentence 3024: Jan Murray
+Sentence 3025: Peter Jay
+Sentence 3031: Graham Taylor
+Sentence 3032: Ian Ormondroyd
+Sentence 3032: Nigel Callaghan
+Sentence 3033: Taylor
+Sentence 3033: Kevin Drinkell
+Sentence 3033: Doug Ellis
+Sentence 3035: David Platt
+Sentence 3035: Alan McInally
+Sentence 3035: Peter Shilton
+Sentence 3036: Derek Mountfield
+Sentence 3036: Kevin Gage
+Sentence 3036: Chris Price
+Sentence 3039: Trevor Francis
+Sentence 3039: Paul Goddard
+Sentence 3040: John Fashanu
+Sentence 3041: John Sheridan
+Sentence 3045: Bowen
+Sentence 3050: Lane
+Sentence 3052: Teddy Sheringham
+Sentence 3052: Tony Cascarino
+Sentence 3053: Mark Bowen
+Sentence 3053: Terry Hurlock
+Sentence 3056: Gary Waddock
+Sentence 3058: Bowen
+Sentence 3058: Robert Fleck
+Sentence 3059: Bowen
+Sentence 3059: Millwall
+Sentence 3060: Nicholas
+Sentence 3062: Charlie Nicholas
+Sentence 3063: Charlie
+Sentence 3064: Nicholas
+Sentence 3065: Alex Smith
+Sentence 3068: Nicholas
+Sentence 3068: Achilles
+Sentence 3069: Jim Bett
+Sentence 3069: Paul Mason
+Sentence 3069: Brian Grant
+Sentence 3069: Robertson
+Sentence 3070: McLeish
+Sentence 3072: Joe Miller
+Sentence 3072: McNeill
+Sentence 3076: Phil Shaw
+Sentence 3078: Frolunda
+Sentence 3080: Andreas Brehme
+Sentence 3081: Real
+Sentence 3082: Bilbao
+Sentence 3085: Howard
+Sentence 3087: JONATHAN
+Sentence 3091: Ian Snodin
+Sentence 3091: McCall
+Sentence 3091: Steve Coppell
+Sentence 3093: Geoff
+Sentence 3093: Andy Gray
+Sentence 3094: Gray
+Sentence 3094: Mark
+Sentence 3094: Neville
+Sentence 3094: Ian
+Sentence 3095: Alan Pardew
+Sentence 3096: Mike Newell
+Sentence 3096: Pat Nevin
+Sentence 3098: Newell
+Sentence 3099: Bassett
+Sentence 3100: JOHN
+Sentence 3101: Sheffield
+Sentence 3101: Dave Bassett
+Sentence 3102: Sheffield
+Sentence 3105: Simon Tracey
+Sentence 3108: Mark Morris
+Sentence 3109: John Gannon
+Sentence 3113: Brian Deane
+Sentence 3113: Armstrong
+Sentence 3114: Ian Bryson
+Sentence 3118: JOHN
+Sentence 3119: Jarryd
+Sentence 3119: Kevin Curren
+Sentence 3120: Brad Gilbert
+Sentence 3121: R E H
+Sentence 3122: JOHN
+Sentence 3122: Michael Chang
+Sentence 3127: JOHN
+Sentence 3128: Peter Ratcliffe
+Sentence 3140: JOHN
+Sentence 3141: David Llewellin
+Sentence 3143: JOHN
+Sentence 3147: JOHN
+Sentence 3148: John Bowe
+Sentence 3148: Sierra
+Sentence 3148: Frank Biela
+Sentence 3148: Ford Sierra
+Sentence 3150: JOHN
+Sentence 3151: BILL
+Sentence 3153: JOHN
+Sentence 3154: JEANNIE
+Sentence 3159: JOHN
+Sentence 3160: JESUS
+Sentence 3160: Fidel Bassa
+Sentence 3162: JOHN
+Sentence 3164: Jim Muir
+Sentence 3164: Mike Marsden
+Sentence 3165: Willie
+Sentence 3165: Hugh Duff
+Sentence 3167: JOHN
+Sentence 3171: JOHN
+Sentence 3172: Eddy Kurniawan
+Sentence 3174: JOHN
+Sentence 3176: Angela Tooby
+Sentence 3180: Rugby
+Sentence 3183: Sheffield
+Sentence 3184: Mark
+Sentence 3185: Mansfield Marksman
+Sentence 3187: Hadden
+Sentence 3188: Jason Ramshaw
+Sentence 3188: Richard Fairbank
+Sentence 3189: Wigan
+Sentence 3190: Steve Clayton
+Sentence 3192: Richard Gay
+Sentence 3193: Kevin Ashcroft
+Sentence 3193: Raider
+Sentence 3193: Ivan Henjak
+Sentence 3194: Dave Lowden
+Sentence 3194: Paul Penrice
+Sentence 3194: Basil Akey
+Sentence 3194: Ryedale
+Sentence 3195: Fulham
+Sentence 3200: Holwell
+Sentence 3200: Rosie Goodridge
+Sentence 3201: Chris Lysons
+Sentence 3202: Karen Brown
+Sentence 3202: Brown
+Sentence 3202: Kate Parker
+Sentence 3202: Hobley
+Sentence 3202: Sue Chandler
+Sentence 3203: Jane Jagger
+Sentence 3203: Joan Lewis
+Sentence 3203: Mandy
+Sentence 3204: Lewis
+Sentence 3204: Anne
+Sentence 3204: Gallyer
+Sentence 3205: Sutton Coldfield
+Sentence 3205: Jane Swinnerton
+Sentence 3205: Jones
+Sentence 3206: Clifton
+Sentence 3207: Jackie
+Sentence 3207: Sue Jones
+Sentence 3207: Maggie
+Sentence 3211: Bill Colwill
+Sentence 3213: David Hacker
+Sentence 3214: Jon
+Sentence 3215: Jeremy
+Sentence 3215: Mark Lewis
+Sentence 3215: Antony
+Sentence 3220: Sara Gomer
+Sentence 3220: Clare
+Sentence 3220: Julie Salmon
+Sentence 3222: Jo Durie
+Sentence 3222: Anne Hobbs
+Sentence 3223: Ann Jones
+Sentence 3227: Jones
+Sentence 3232: Marty
+Sentence 3233: Martina Navratilova
+Sentence 3233: Chris Evert
+Sentence 3233: Gabriela Sabatini
+Sentence 3234: Charlie
+Sentence 3234: Joe Lovejoy
+Sentence 3239: Charles Clairmonte
+Sentence 3241: Charlie
+Sentence 3243: Clairmonte
+Sentence 3243: John Carl Grimek
+Sentence 3244: Edward Kawak
+Sentence 3245: Carry
+Sentence 3251: Casey Kucharyk
+Sentence 3252: Sorry
+Sentence 3252: Casey
+Sentence 3255: Room Kawak
+Sentence 3256: Tatyana Scholl
+Sentence 3256: Bikini
+Sentence 3257: Midler
+Sentence 3258: Bikini
+Sentence 3260: Charlie Clairmonte
+Sentence 3262: Charlie
+Sentence 3267: Novak
+Sentence 3269: Pelle Petterson
+Sentence 3272: Mandy
+Sentence 3273: Fortuna
+Sentence 3273: Charles Jourdan
+Sentence 3275: Davis
+Sentence 3276: JANICE
+Sentence 3277: STEVE DAVIS
+Sentence 3277: Stephen
+Sentence 3277: Janice Hale
+Sentence 3278: Davis
+Sentence 3280: Scot
+Sentence 3289: John Whitaker
+Sentence 3289: Arena
+Sentence 3290: Genevieve Murphy
+Sentence 3291: Milton
+Sentence 3291: Gammon
+Sentence 3294: David Broome
+Sentence 3294: Paul Schockemohle
+Sentence 3295: Mark Todd
+Sentence 3296: Parke
+Sentence 3298: Sabir Butt
+Sentence 3298: Richard Eaton
+Sentence 3299: Parke
+Sentence 3301: Jason Nicolle
+Sentence 3301: Del Harris
+Sentence 3303: Maqsood Ahmed
+Sentence 3305: Geoff
+Sentence 3309: JOHN
+Sentence 3310: Robert Sangster
+Sentence 3311: Sheikh Mohammed
+Sentence 3314: Sheikh Mohammed
+Sentence 3315: Hamdan
+Sentence 3315: Maktoum
+Sentence 3318: William Hill
+Sentence 3321: Sheikh Mohammed
+Sentence 3323: Walter Swinburn
+Sentence 3323: Zilzal
+Sentence 3325: Pat Eddery
+Sentence 3325: Khalid Abdullah
+Sentence 3326: Steve Cauthen
+Sentence 3326: Greville Starkey
+Sentence 3329: Willie Carson
+Sentence 3330: Willie
+Sentence 3330: John Sutcliffe
+Sentence 3331: Willie
+Sentence 3333: JOHN
+Sentence 3336: H
+Sentence 3336: Thomson Jones
+Sentence 3342: L
+Sentence 3345: Runcie
+Sentence 3346: ANDREW BROWN
+Sentence 3347: Dr Robert Runcie
+Sentence 3347: John Paul II
+Sentence 3347: Peter '
+Sentence 3348: Runcie
+Sentence 3349: Runcie
+Sentence 3350: Runcie
+Sentence 3350: Ian Paisley
+Sentence 3351: Runcie
+Sentence 3351: Roman
+Sentence 3352: Runcie
+Sentence 3352: Roman Catholicism
+Sentence 3354: Gregory
+Sentence 3356: Runcie
+Sentence 3359: Peter
+Sentence 3359: Gregory
+Sentence 3361: Runcie
+Sentence 3364: Barbara Harris
+Sentence 3365: Bishop Harris
+Sentence 3367: Runcie
+Sentence 3368: Sister Margaret Traxler
+Sentence 3368: Runcie
+Sentence 3369: Runcie
+Sentence 3375: Hermann
+Sentence 3376: Hans-Dietrich Genscher
+Sentence 3378: Let
+Sentence 3398: Mr Genscher
+Sentence 3400: Mr Genscher
+Sentence 3400: President Gorbachev
+Sentence 3403: JOHN SMITH
+Sentence 3403: Chancellor
+Sentence 3405: Mr Smith
+Sentence 3414: Mr Smith
+Sentence 3416: Prime
+Sentence 3420: Mr Smith
+Sentence 3420: Ken Livingstone
+Sentence 3420: Brent
+Sentence 3422: Mr Livingstone
+Sentence 3423: David Blunkett
+Sentence 3425: Neil
+Sentence 3427: Ron Todd
+Sentence 3433: President Mikhail Gorbachev
+Sentence 3438: Vladimir Filanovsky-Zenkov
+Sentence 3444: Mikhail Shchadov
+Sentence 3449: DONALDSON
+Sentence 3471: DONALDSON
+Sentence 3478: Leigh
+Sentence 3484: Leigh
+Sentence 3486: DONALDSON
+Sentence 3508: Nick Roe
+Sentence 3509: Richard North
+Sentence 3529: Wheeler
+Sentence 3537: Keith Thomas
+Sentence 3544: Hough
+Sentence 3549: Keith Thomas
+Sentence 3566: Madeleine
+Sentence 3576: Llew Smith
+Sentence 3588: Andy
+Sentence 3607: RICHARD
+Sentence 3613: David Mills
+Sentence 3614: Mr Mills
+Sentence 3625: David Mills
+Sentence 3628: David Mills
+Sentence 3642: Margaret Thatcher
+Sentence 3644: Chris Patten
+Sentence 3653: Elaine Heath
+Sentence 3653: Cherrill Hicks
+Sentence 3657: Elaine
+Sentence 3658: Elaine
+Sentence 3668: Elaine
+Sentence 3672: Elaine
+Sentence 3675: Elaine
+Sentence 3678: Elaine
+Sentence 3685: Elaine
+Sentence 3699: Elaine
+Sentence 3704: Elaine
+Sentence 3721: Elaine
+Sentence 3725: Bill
+Sentence 3726: Elaine
+Sentence 3727: Elaine
+Sentence 3734: Elaine
+Sentence 3740: Henry
+Sentence 3749: Henry
+Sentence 3751: Henry
+Sentence 3753: Henry
+Sentence 3754: Henry
+Sentence 3763: Henry
+Sentence 3764: Walter Mitty
+Sentence 3767: Henry
+Sentence 3768: Dr Max Gerson
+Sentence 3771: Gerson
+Sentence 3774: Gerson
+Sentence 3777: Henry
+Sentence 3783: Henry
+Sentence 3795: Henry
+Sentence 3796: McLean
+Sentence 3797: Henry
+Sentence 3800: Henry
+Sentence 3801: Mclean
+Sentence 3802: Henry
+Sentence 3829: Maurice Slevin
+Sentence 3830: Henry
+Sentence 3830: Slevin
+Sentence 3832: Slevin
+Sentence 3843: PETER DUNN
+Sentence 3844: PETER FRASER
+Sentence 3844: Bookshop
+Sentence 3844: Michael Joseph
+Sentence 3846: Michael Joseph
+Sentence 3847: Mr
+Sentence 3849: PETER DUNN
+Sentence 3851: Linda Joyce
+Sentence 3852: Miss Joyce
+Sentence 3855: PETER DUNN
+Sentence 3856: Week
+Sentence 3857: Rupert Murdoch
+Sentence 3861: PETER DUNN
+Sentence 3864: Rupert Murdoch
+Sentence 3868: John Lichfield
+Sentence 3869: JOHN
+Sentence 3871: Ben Cartwright
+Sentence 3871: Little Joe
+Sentence 3873: Vice
+Sentence 3877: David Jacobs
+Sentence 3878: John Wayne
+Sentence 3879: Balou
+Sentence 3879: Butch Cassidy
+Sentence 3879: Kid
+Sentence 3881: Howard Rosenberg
+Sentence 3884: John Mantley
+Sentence 3891: Gene
+Sentence 3896: David Jacobs
+Sentence 3897: J R
+Sentence 3901: Dove
+Sentence 3905: Young
+Sentence 3910: David Jacobs
+Sentence 3917: Mr Jacobs
+Sentence 3919: John Mantley
+Sentence 3928: Roseanne
+Sentence 3931: Le Monde
+Sentence 3931: Sarah Lambert
+Sentence 3934: Le Monde
+Sentence 3935: Le Monde
+Sentence 3938: Le Monde
+Sentence 3939: Le Monde
+Sentence 3945: Andre Fontaine
+Sentence 3948: Le Monde
+Sentence 3949: Le Monde
+Sentence 3951: Mr
+Sentence 3953: Mr
+Sentence 3953: Le Monde
+Sentence 3958: Mr
+Sentence 3960: Jean Bayle
+Sentence 3960: Le
+Sentence 3961: Daniel
+Sentence 3963: Monde
+Sentence 3964: Andre Fontaine
+Sentence 3964: Hubert
+Sentence 3967: Le Monde
+Sentence 3970: S
+Sentence 3974: Marie
+Sentence 3978: Anthony Lester
+Sentence 4009: Margaret
+Sentence 4009: Wilson
+Sentence 4023: Smith
+Sentence 4023: William Wade
+Sentence 4029: Denning
+Sentence 4029: Reid
+Sentence 4036: Diplock
+Sentence 4047: Fein
+Sentence 4052: Diplock
+Sentence 4054: Pat Healy
+Sentence 4054: Victim
+Sentence 4055: PAT
+Sentence 4060: Helen
+Sentence 4062: Ms
+Sentence 4068: Ms
+Sentence 4077: Victim
+Sentence 4079: Ms
+Sentence 4081: Victim
+Sentence 4083: Victim
+Sentence 4086: Ms
+Sentence 4090: Stephen
+Sentence 4102: Take
+Sentence 4128: Bookshop
+Sentence 4130: Barbara Leaming
+Sentence 4133: Fred
+Sentence 4135: Gilda
+Sentence 4136: Ms
+Sentence 4139: George Plimpton
+Sentence 4140: Allen Ginsberg
+Sentence 4140: Blake
+Sentence 4140: John
+Sentence 4140: Elizabeth Bishop
+Sentence 4142: Robert
+Sentence 4143: Tomalin
+Sentence 4145: Roger
+Sentence 4147: John
+Sentence 4147: Charles Wesley
+Sentence 4149: Hetty
+Sentence 4151: William
+Sentence 4161: Anne
+Sentence 4161: Mary Wortley Montagu
+Sentence 4161: Joanna Baillie
+Sentence 4161: Helen
+Sentence 4161: Maria Williams
+Sentence 4167: Richardson
+Sentence 4167: Johnson
+Sentence 4169: Miss W
+Sentence 4174: Gray
+Sentence 4177: Susanna
+Sentence 4183: Elizabeth Barrett
+Sentence 4191: Sarah
+Sentence 4191: John Downman
+Sentence 4193: Elizabeth
+Sentence 4194: Anderson
+Sentence 4194: Sir Charles Grandison
+Sentence 4195: Belle
+Sentence 4198: Rhymer
+Sentence 4199: Sir Timothy Turtle
+Sentence 4200: Familiar
+Sentence 4200: Alice Walker
+Sentence 4201: JILL
+Sentence 4202: Alice
+Sentence 4209: Familiar
+Sentence 4210: Gospel
+Sentence 4213: Adam
+Sentence 4214: Lissie
+Sentence 4217: Shirley
+Sentence 4220: Fanny
+Sentence 4221: Fanny
+Sentence 4223: Arveyda
+Sentence 4228: Thomas Keneally
+Sentence 4230: Thomas Keneally
+Sentence 4230: Sister
+Sentence 4230: Schindler
+Sentence 4231: Asmara
+Sentence 4232: Haile Selassie
+Sentence 4235: Jimmy Carter
+Sentence 4238: Darcy
+Sentence 4238: Bob Geldof
+Sentence 4243: Julie
+Sentence 4249: Darcy
+Sentence 4257: Raymond
+Sentence 4257: Collins Harvill
+Sentence 4260: Martin Amis
+Sentence 4262: Wendy Steiner
+Sentence 4263: Michael Frayn
+Sentence 4265: Mark Lawson
+Sentence 4266: Hans Magnus
+Sentence 4268: Anthony
+Sentence 4269: J Fox
+Sentence 4269: H Sisson
+Sentence 4270: J
+Sentence 4271: H
+Sentence 4273: Rovers
+Sentence 4278: Sisson
+Sentence 4282: E
+Sentence 4284: Sisson
+Sentence 4286: Sisson
+Sentence 4289: Sisson
+Sentence 4298: Christopher Homm
+Sentence 4303: Sisson
+Sentence 4306: Andrew
+Sentence 4308: Byron
+Sentence 4313: Andrew
+Sentence 4314: Francis Mayne
+Sentence 4317: Francis
+Sentence 4320: Francis
+Sentence 4320: Keith
+Sentence 4324: Francis
+Sentence 4330: Francis
+Sentence 4334: Saul
+Sentence 4335: ANTHONY QUINN
+Sentence 4336: Robert Ludlum
+Sentence 4338: Saul
+Sentence 4343: Harry Fonstein
+Sentence 4348: Harry
+Sentence 4359: Thomas Mann
+Sentence 4365: Martin Amis
+Sentence 4367: John Berger
+Sentence 4367: Granta
+Sentence 4369: John Berger
+Sentence 4370: Pig
+Sentence 4375: Pig
+Sentence 4378: Boris
+Sentence 4381: Boris
+Sentence 4382: Boris
+Sentence 4383: Boris
+Sentence 4384: Berger
+Sentence 4402: James Ruppert
+Sentence 4403: JAMES
+Sentence 4419: Y
+Sentence 4424: Toyota
+Sentence 4436: Brett
+Sentence 4450: Alfa
+Sentence 4495: Roger Bell
+Sentence 4505: Rover
+Sentence 4507: Snag
+Sentence 4516: V
+Sentence 4520: V
+Sentence 4521: V
+Sentence 4523: Ford V
+Sentence 4532: V
+Sentence 4555: Christie
+Sentence 4567: Roman Way
+Sentence 4568: John
+Sentence 4569: JOHN
+Sentence 4575: Henry
+Sentence 4577: Terry
+Sentence 4581: Peter Card
+Sentence 4590: Kelly
+Sentence 4592: Grant
+Sentence 4594: John Orbell
+Sentence 4595: Library
+Sentence 4596: Scott-Wexo
+Sentence 4597: Jim Goodson
+Sentence 4599: Edward Lucie-Smith
+Sentence 4604: Peter Osborne
+Sentence 4612: Rouault
+Sentence 4613: Frank Stella
+Sentence 4613: Jim Dine
+Sentence 4613: Sam Francis
+Sentence 4614: Henry Moore
+Sentence 4614: David Hockney
+Sentence 4622: Edvard
+Sentence 4630: Mr Osborne
+Sentence 4638: Carol Summers
+Sentence 4643: Le Samourai
+Sentence 4645: Sam Francis
+Sentence 4647: Matisse
+Sentence 4653: Mr Osborne
+Sentence 4663: Paul
+Sentence 4679: Pretty
+Sentence 4680: Robert
+Sentence 4680: Bernard
+Sentence 4681: Derek Booth
+Sentence 4684: Booth
+Sentence 4685: Clearly Sam Weller
+Sentence 4690: Weller
+Sentence 4691: Jeff Woods
+Sentence 4691: Weller
+Sentence 4700: John Murray
+Sentence 4711: P Taylor
+Sentence 4711: Chester
+Sentence 4712: Frances Craig
+Sentence 4713: Margaret Crisell
+Sentence 4713: Milmanda
+Sentence 4716: Oloroso
+Sentence 4717: Y
+Sentence 4735: Joel Weiner
+Sentence 4735: Morris
+Sentence 4736: Weiner
+Sentence 4751: Doyle
+Sentence 4760: Roles
+Sentence 4762: Raymond Blanc
+Sentence 4765: Richard Nelson
+Sentence 4772: Deirdre McQuillan
+Sentence 4773: MCQUILLAN
+Sentence 4774: William Black
+Sentence 4775: Rungis
+Sentence 4775: Alistair Little
+Sentence 4778: Jim Moran
+Sentence 4781: Mr Moran
+Sentence 4781: R W Larkin
+Sentence 4781: King
+Sentence 4787: Mr Moran
+Sentence 4800: Nicholas Roe
+Sentence 4807: Hart
+Sentence 4815: William
+Sentence 4821: Mr
+Sentence 4834: Alex Griffiths
+Sentence 4840: Tim Lucas
+Sentence 4842: Jim Moran
+Sentence 4847: Nicholas Roe
+Sentence 4851: Michael Jackson
+Sentence 4852: MICHAEL JACKSON
+Sentence 4856: Boy
+Sentence 4867: Let
+Sentence 4886: Queen Victoria
+Sentence 4888: God
+Sentence 4920: Drink
+Sentence 4921: MICHAEL JACKSON
+Sentence 4923: Cook
+Sentence 4924: Julia Noon
+Sentence 4924: Anne
+Sentence 4924: Prime
+Sentence 4926: Drink
+Sentence 4927: MICHAEL JACKSON
+Sentence 4929: Benat Arroyabe
+Sentence 4930: Jose Ramon
+Sentence 4931: Maria Jose Sevilla
+Sentence 4934: Drink
+Sentence 4935: MICHAEL JACKSON
+Sentence 4937: Chester
+Sentence 4938: Martin Wood
+Sentence 4939: Mr
+Sentence 4940: Sutherland-Dodd
+Sentence 4940: Newcomer
+Sentence 4941: Sutherland-Dodd
+Sentence 4943: Martin Wood
+Sentence 4943: Chester
+Sentence 4949: Perrier
+Sentence 4951: Clicquot
+Sentence 4954: Rack
+Sentence 4955: Rack
+Sentence 4955: Carte
+Sentence 4955: Charles Heidsieck
+Sentence 4958: Baron
+Sentence 4959: Wine
+Sentence 4960: Ellicott
+Sentence 4966: Bermondsey
+Sentence 4967: Graham Poole
+Sentence 4973: Mr Poole
+Sentence 4986: Dennis Thompson
+Sentence 4990: Mr Poole
+Sentence 4997: Mr
+Sentence 5000: Roy Orbison
+Sentence 5003: Mr Poole
+Sentence 5007: Ellen Galford
+Sentence 5016: Fazzi
+Sentence 5028: Fazzi
+Sentence 5039: Victor Contini
+Sentence 5043: Ian
+Sentence 5047: Ian
+Sentence 5049: Ian
+Sentence 5050: Temple
+Sentence 5052: Ian
+Sentence 5054: Galicia
+Sentence 5054: Ricot
+Sentence 5062: Galicia
+Sentence 5062: Clapham
+Sentence 5067: David
+Sentence 5067: Lapidus
+Sentence 5071: Martin Kelner
+Sentence 5073: Chaim
+Sentence 5120: Runner
+Sentence 5123: Anna
+Sentence 5159: Anna
+Sentence 5162: Mark Girouard
+Sentence 5162: Robert Smythson
+Sentence 5162: Jill Lever
+Sentence 5162: Margaret Richardson
+Sentence 5163: Jane Brown
+Sentence 5166: Jane Brown
+Sentence 5168: Baillie Scott
+Sentence 5169: Charles Voysey
+Sentence 5169: Lane
+Sentence 5173: Chester
+Sentence 5174: Oliver Hill
+Sentence 5174: Binfield
+Sentence 5178: Jane Brown
+Sentence 5179: Sir Geoffrey Jellicoe
+Sentence 5181: Jane Brown
+Sentence 5182: Sir Jeffry
+Sentence 5186: Jane Brown
+Sentence 5188: Barry
+Sentence 5188: Barry '
+Sentence 5188: Lacey
+Sentence 5189: Joseph Paxton
+Sentence 5190: Bailey
+Sentence 5191: Jane Brown
+Sentence 5195: Bob Fitzsimmons
+Sentence 5197: Alverton
+Sentence 5198: Mayo
+Sentence 5201: Allison
+Sentence 5202: ALLISON
+Sentence 5262: ALLISON
+Sentence 5267: ALLISON
+Sentence 5271: ALLISON
+Sentence 5272: Frank
+Sentence 5275: Loch
+Sentence 5277: ALLISON
+Sentence 5281: ALLISON
+Sentence 5283: Ortega
+Sentence 5284: Charles Galbraith
+Sentence 5285: Chimney
+Sentence 5286: ALLISON
+Sentence 5290: ALLISON
+Sentence 5295: Witty
+Sentence 5296: ALLISON
+Sentence 5297: Witty
+Sentence 5297: Mrs
+Sentence 5297: Terry Jones
+Sentence 5299: Mrs Jones
+Sentence 5302: Andrew Bibby
+Sentence 5303: ANDREW
+Sentence 5304: Julie Widlake
+Sentence 5310: Julie Widlake
+Sentence 5318: Graham Harrison
+Sentence 5323: David Phillip
+Sentence 5328: Graham Harrison
+Sentence 5334: David Phillip
+Sentence 5343: Julie Widlake
+Sentence 5347: Graham Harrison
+Sentence 5350: Peter Crowther
+Sentence 5354: Graham Harrison
+Sentence 5357: Vinny Lee
+Sentence 5359: Gerorge
+Sentence 5361: Romney Marsh Smock
+Sentence 5361: Docker
+Sentence 5364: George Trowark
+Sentence 5365: Martin Storey
+Sentence 5365: Trowark
+Sentence 5372: Martin Storey
+Sentence 5375: Chunky
+Sentence 5379: Chunky
+Sentence 5380: Chunky
+Sentence 5383: Chunky
+Sentence 5384: W
+Sentence 5390: Chunky
+Sentence 5392: Fairisle
+Sentence 5393: Chunky
+Sentence 5397: Jigsaw
+Sentence 5397: James Street
+Sentence 5397: W
+Sentence 5401: Jonathan Glancey
+Sentence 5409: Vittore
+Sentence 5411: Altrincham
+Sentence 5411: Oldham
+Sentence 5412: Llandudno
+Sentence 5425: Giovanni Koenig
+Sentence 5434: Greater
+Sentence 5445: Levin
+Sentence 5448: W
+Sentence 5453: Lynda Hillyer
+Sentence 5473: Bernard Dore
+Sentence 5475: Mr Dore
+Sentence 5477: James '
+Sentence 5477: Y
+Sentence 5485: Toilet
+Sentence 5489: Ms
+Sentence 5493: Joseph
+Sentence 5493: Sloane
+Sentence 5496: George Trowark
+Sentence 5496: Jeremy Young
+Sentence 5496: Vinny Lee
+Sentence 5500: Mr Young
+Sentence 5508: Mr Young
+Sentence 5516: Mr Young
+Sentence 5518: Mr Young
+Sentence 5522: PETER DUNN
+Sentence 5524: Simon Turner
+Sentence 5524: Rocker
+Sentence 5525: Mr Turner
+Sentence 5528: Rocker
+Sentence 5532: Mr
+Sentence 5534: Mr
+Sentence 5543: PETER DUNN
+Sentence 5544: E
+Sentence 5551: PETER DUNN
+Sentence 5555: Roger Millman
+Sentence 5556: Lurie
+Sentence 5556: Sarah Bernhardt
+Sentence 5564: Paul Masson
+Sentence 5566: Flaubert
+Sentence 5567: Andre Breton
+Sentence 5567: Salvador
+Sentence 5567: Sauvage
+Sentence 5573: Quiberon
+Sentence 5574: Menhir
+Sentence 5576: Le
+Sentence 5582: Touiss
+Sentence 5582: Hadj
+Sentence 5583: Karl Marx
+Sentence 5587: Sauvage
+Sentence 5588: Sarah Bernhardt
+Sentence 5596: Sauvage
+Sentence 5600: Sauvage
+Sentence 5606: Jean
+Sentence 5606: Jeanne
+Sentence 5610: Flaubert
+Sentence 5612: Flaubert
+Sentence 5613: Alison Lurie
+Sentence 5614: Lorin Jones
+Sentence 5615: Alison Lurie
+Sentence 5618: Roscoff
+Sentence 5627: Chris Gill
+Sentence 5628: CHRIS
+Sentence 5639: Moritz
+Sentence 5639: Zermatt
+Sentence 5646: Zermatt
+Sentence 5647: Moritz
+Sentence 5655: Zermatt
+Sentence 5656: Saas
+Sentence 5662: CHRIS
+Sentence 5666: CHRIS
+Sentence 5673: Chris Gill
+Sentence 5676: CHRIS
+Sentence 5679: Angela Lambert
+Sentence 5687: Lavenham
+Sentence 5688: Ronald Blythe
+Sentence 5691: Dedham Hall
+Sentence 5694: Hall
+Sentence 5697: Dedham
+Sentence 5697: Hall
+Sentence 5697: Higham
+Sentence 5698: John
+Sentence 5698: Margaret Parker
+Sentence 5700: Stephen
+Sentence 5700: Janet Errington
+Sentence 5711: Hall
+Sentence 5712: Lavenham
+Sentence 5715: Hall
+Sentence 5717: Stephen
+Sentence 5726: David Reed
+Sentence 5727: DAVID
+Sentence 5737: Kathmandu
+Sentence 5738: Frances Higgins
+Sentence 5754: Michael Jackson
+Sentence 5755: King Birendra
+Sentence 5755: Queen Aishwarya
+Sentence 5770: Ms
+Sentence 5787: Babin
+Sentence 5791: Kathmandu
+Sentence 5793: Stephen Bezruchka
+Sentence 5794: David Reed
+Sentence 5796: W
+Sentence 5800: Tavel
+Sentence 5800: Top
+Sentence 5801: DAVID
+Sentence 5803: Tavel
+Sentence 5804: DAVID
+Sentence 5806: Havre
+Sentence 5807: Tavel
+Sentence 5808: DAVID
+Sentence 5810: David Rundle
+Sentence 5813: Mr
+Sentence 5822: Mr
+Sentence 5824: Ian Lindsey
+Sentence 5824: Mr
+Sentence 5825: Mr Lindsey
+Sentence 5839: John
+Sentence 5842: John
+Sentence 5844: Hans
+Sentence 5871: Fledermaus
+Sentence 5872: Concerto
+Sentence 5890: Ostend
+Sentence 5891: Zeebrugge
+Sentence 5897: Dunkirk
+Sentence 5899: Jean Bart
+Sentence 5902: Jonathan Glancey
+Sentence 5904: S
+Sentence 5907: Birmingham
+Sentence 5910: Herbert Manzoni
+Sentence 5910: Neville Borg
+Sentence 5916: Chapman
+Sentence 5916: Taylor
+Sentence 5917: Joe Holyoak
+Sentence 5920: John
+Sentence 5925: Paul '
+Sentence 5926: Martin
+Sentence 5930: Leamington
+Sentence 5930: Sandwell
+Sentence 5930: Merry Hill
+Sentence 5932: Rodney Karen
+Sentence 5933: Karen
+Sentence 5935: Joe Holyoak
+Sentence 5938: Tony Ridell
+Sentence 5938: Chapman
+Sentence 5938: Taylor
+Sentence 5940: Holyoak
+Sentence 5946: trump
+Sentence 5950: John
+Sentence 5958: Chapman Taylor
+Sentence 5959: Chapman Taylor
+Sentence 5959: Rodney Karen
+Sentence 5965: Birmingham
+Sentence 5971: Joe Holyoak
+Sentence 5972: St Paul '
+Sentence 5972: Gavin
+Sentence 5974: Paul '
+Sentence 5977: Wanamaker
+Sentence 5981: Paul '
+Sentence 5988: Giles
+Sentence 5988: Gilbert Scott
+Sentence 5991: Scott
+Sentence 5993: Scott
+Sentence 5993: John Betjeman
+Sentence 5994: Kenneth Clark
+Sentence 5994: Rebecca
+Sentence 5994: Charles Laughton
+Sentence 5995: Scott
+Sentence 6011: Caithness
+Sentence 6015: Bottomley
+Sentence 6016: Michael Heseltine
+Sentence 6017: Prime
+Sentence 6028: Janet Street-Porter
+Sentence 6029: Ms
+Sentence 6029: Gough
+Sentence 6036: Peter Smith
+Sentence 6038: Way
+Sentence 6039: Lynda McStay
+Sentence 6042: Ron Herron
+Sentence 6042: Queen Elizabeth Hall
+Sentence 6043: Herron
+Sentence 6044: W
+Sentence 6045: Composer Robin
+Sentence 6069: Lutoslawski
+Sentence 6069: Penderecki
+Sentence 6080: Luke
+Sentence 6080: Penderecki
+Sentence 6080: John
+Sentence 6081: Tippett
+Sentence 6081: Steve
+Sentence 6081: John Tavener
+Sentence 6081: Jonathan Harvey
+Sentence 6087: Stravinsky
+Sentence 6088: Ersatz
+Sentence 6107: Concerto
+Sentence 6108: Evgeny Kissin
+Sentence 6109: Vladimir Spivakov
+Sentence 6110: Victor RD
+Sentence 6111: Piano
+Sentence 6111: Sonata
+Sentence 6112: Zilberstein
+Sentence 6115: Shostakovich
+Sentence 6121: Evgeny Kissin
+Sentence 6121: Zilberstein
+Sentence 6122: Kissin
+Sentence 6123: Concerto
+Sentence 6125: Rudolph
+Sentence 6125: Victor Poltoratsky
+Sentence 6126: Zilberstein
+Sentence 6128: Sonata
+Sentence 6129: Lloyd
+Sentence 6130: Sonata
+Sentence 6131: John McCabe
+Sentence 6133: Sonata
+Sentence 6134: Lloyd
+Sentence 6134: McCabe
+Sentence 6135: Concerto
+Sentence 6139: Shumsky
+Sentence 6139: Anne-Sophie
+Sentence 6141: Queen Elizabeth Hall
+Sentence 6143: Hall
+Sentence 6144: Sir Charles Mackerras
+Sentence 6145: Lynne Dawson
+Sentence 6145: Anthony Rolfe Johnson
+Sentence 6145: David Wilson-Johnson
+Sentence 6145: Clarkson
+Sentence 6152: Lynne Dawson
+Sentence 6172: Neil Armstrong
+Sentence 6172: Aldrin
+Sentence 6173: Pat Collins
+Sentence 6174: George Brown
+Sentence 6176: THOMAS
+Sentence 6188: Mark Steyn
+Sentence 6188: Buddy
+Sentence 6189: MARK
+Sentence 6193: Glenn Miller
+Sentence 6193: Jason Donovan
+Sentence 6195: Buddy
+Sentence 6196: ma
+Sentence 6201: II
+Sentence 6202: Jones
+Sentence 6202: Oliver
+Sentence 6203: Buddy
+Sentence 6204: Judy
+Sentence 6204: John Lennon
+Sentence 6205: Alan Janes
+Sentence 6208: Marvel
+Sentence 6215: Fanny
+Sentence 6217: Buddy
+Sentence 6219: Buddy
+Sentence 6223: Chuck Berry
+Sentence 6225: Berry
+Sentence 6226: Buddy
+Sentence 6226: Ridge
+Sentence 6234: Buddy
+Sentence 6236: Paul Hipp
+Sentence 6237: Andy Walmsley
+Sentence 6237: Van Heusen
+Sentence 6238: Rob Bettinson
+Sentence 6239: Winnie
+Sentence 6239: Buddy
+Sentence 6242: Ritchie Valens
+Sentence 6245: McLean
+Sentence 6246: Peter Kemp
+Sentence 6246: Roger Hall
+Sentence 6246: Roll
+Sentence 6247: PETER KEMP
+Sentence 6248: Roll
+Sentence 6252: Roger Hall
+Sentence 6263: Hall
+Sentence 6267: Plump
+Sentence 6269: Simon Slater
+Sentence 6270: Roll
+Sentence 6272: Macbeth
+Sentence 6274: David Garrick
+Sentence 6282: Nigel Jamieson
+Sentence 6285: Clare Benedict
+Sentence 6287: Bernard
+Sentence 6287: Macbeth
+Sentence 6292: Ian Halcrow
+Sentence 6296: Brett
+Sentence 6299: Deren
+Sentence 6327: Luis Enrique Tord
+Sentence 6338: Riano
+Sentence 6341: Bernardo Bitti
+Sentence 6343: Leopoldo
+Sentence 6346: Byzantine
+Sentence 6349: Manuel de
+Sentence 6350: El Grecos
+Sentence 6353: James
+Sentence 6355: II
+Sentence 6364: Teresa Gisbert
+Sentence 6366: Martin Soria
+Sentence 6367: Teresa Gisbert
+Sentence 6378: Julia P
+Sentence 6400: Leopoldo
+Sentence 6402: Michael
+Sentence 6403: Michael patron
+Sentence 6407: Lopez
+Sentence 6421: Teresa Gisbert
+Sentence 6426: Eduardo Mondlane
+Sentence 6433: Guillermo Gomez-Pe
+Sentence 6434: Juan Davila
+Sentence 6441: Botero
+Sentence 6445: Michael
+Sentence 6448: Rocha
+Sentence 6457: Gisbert
+Sentence 6457: Leopoldo
+Sentence 6457: Julia P
+Sentence 6457: Luis Enrique Tord
+Sentence 6459: Oriana Baddeley
+Sentence 6464: Kahlo
+Sentence 6465: Kahlo
+Sentence 6467: Laura Mulvey
+Sentence 6467: Peter Wollen
+Sentence 6467: Hayden
+Sentence 6468: Paul Leduc
+Sentence 6469: Kahlo
+Sentence 6470: Madonna
+Sentence 6472: Elle
+Sentence 6476: Van Gogh
+Sentence 6478: Van Gogh
+Sentence 6481: Kahlo
+Sentence 6486: Elle
+Sentence 6492: Elle
+Sentence 6496: Hair
+Sentence 6523: Olmeda
+Sentence 6527: Ducasse
+Sentence 6532: Dorothy
+Sentence 6535: Hale
+Sentence 6542: Dorothy
+Sentence 6542: Fair
+Sentence 6547: Dorothy
+Sentence 6551: Jean
+Sentence 6555: Llorona
+Sentence 6562: Dorothy
+Sentence 6566: Kahlo
+Sentence 6567: My
+Sentence 6580: Leo
+Sentence 6592: Kahlo
+Sentence 6596: Manuel Reyero
+Sentence 6599: Moderno
+Sentence 6600: S
+Sentence 6603: Vasari
+Sentence 6609: Alberto Gironella
+Sentence 6610: Shifra Goldman
+Sentence 6610: Luis Cardoza
+Sentence 6610: Rodriguez Prampolini
+Sentence 6612: Octavio
+Sentence 6613: Breton
+Sentence 6614: Gironella
+Sentence 6619: Gironella
+Sentence 6621: Goya
+Sentence 6621: Greco
+Sentence 6621: Vald
+Sentence 6622: Greco
+Sentence 6623: Goya
+Sentence 6627: Juan Bautista Maino
+Sentence 6644: Gironella
+Sentence 6645: Lisa
+Sentence 6648: Goya
+Sentence 6650: Alberto Gironella
+Sentence 6651: Jorge Pablo
+Sentence 6651: OMR
+Sentence 6652: Gironella
+Sentence 6657: Tiburcio
+Sentence 6661: Gironella
+Sentence 6661: Vlady
+Sentence 6661: H
+Sentence 6662: Luis
+Sentence 6664: Gironella
+Sentence 6666: Juan Bautista
+Sentence 6666: Maino
+Sentence 6668: Vlady
+Sentence 6669: Goya
+Sentence 6669: Queen Maria Luisa
+Sentence 6670: Luisa
+Sentence 6671: Gironella
+Sentence 6673: Gironella
+Sentence 6674: Queen Maria Luisa
+Sentence 6674: IV
+Sentence 6675: Gironella
+Sentence 6676: Mariana
+Sentence 6681: Gironella
+Sentence 6687: El
+Sentence 6690: Queen Mariana
+Sentence 6692: Queen
+Sentence 6699: Gironella
+Sentence 6704: Alberto Gironella
+Sentence 6704: Mariana
+Sentence 6706: OMR
+Sentence 6708: Alberto Gironella
+Sentence 6723: Gironella
+Sentence 6724: Queen Mariana
+Sentence 6724: Queen
+Sentence 6728: Gironella
+Sentence 6732: II
+Sentence 6738: Alberto Gironella
+Sentence 6738: Mariana
+Sentence 6743: Queen Mariana
+Sentence 6743: Lezcano
+Sentence 6744: Mariana
+Sentence 6747: Mariana
+Sentence 6747: Queen Mariana
+Sentence 6749: Queen
+Sentence 6755: Alberto Gironella
+Sentence 6756: Rodriquez
+Sentence 6757: OMR
+Sentence 6770: Columbus
+Sentence 6776: Alberto Gironella
+Sentence 6776: Queen Mariana
+Sentence 6779: Alberto Gironella
+Sentence 6780: Luis Felipe
+Sentence 6781: Bob Schalkwijk
+Sentence 6781: OMR
+Sentence 6783: Gironella
+Sentence 6785: Pertusato
+Sentence 6786: Gironella
+Sentence 6787: Edouard Jaguer
+Sentence 6788: Gironella
+Sentence 6793: Gironella
+Sentence 6797: Paul Wood
+Sentence 6798: Alex Callinicos
+Sentence 6798: Basil Blackwell
+Sentence 6816: Charles Jencks
+Sentence 6816: Lunn
+Sentence 6817: Joyce
+Sentence 6818: Lyotard
+Sentence 6838: Terry
+Sentence 6855: Schmitt
+Sentence 6856: Michael Lowy
+Sentence 6863: Berman
+Sentence 6863: Perry Anderson
+Sentence 6874: Callinicos
+Sentence 6880: Peter B
+Sentence 6884: Sachlichkeit
+Sentence 6887: Benjamin
+Sentence 6890: Perry Anderson
+Sentence 6901: Peter B
+Sentence 6901: Van Goghs
+Sentence 6935: Walter Benjamin
+Sentence 6940: Benjamin
+Sentence 6960: Scargill
+Sentence 6971: Walter Benjamin
+Sentence 6976: Benjamin
+Sentence 6992: Martin Kemp
+Sentence 6994: Giorgio
+Sentence 6994: Santillana
+Sentence 6995: Roebuck
+Sentence 7000: Jordanus
+Sentence 7000: Galileo
+Sentence 7001: Santillana
+Sentence 7006: Martin Kemp
+Sentence 7022: Giotto
+Sentence 7022: Brunelleschi
+Sentence 7040: Harris
+Sentence 7040: Chevreul
+Sentence 7041: Louis Castel
+Sentence 7044: Harris
+Sentence 7045: Helmholtz
+Sentence 7045: Rood
+Sentence 7045: James Clerk
+Sentence 7064: Brook Taylor
+Sentence 7065: Taylor
+Sentence 7066: David Brewster
+Sentence 7072: Galileo
+Sentence 7092: Galileo
+Sentence 7093: Galileo
+Sentence 7097: George Berkeley
+Sentence 7098: Berkeley
+Sentence 7118: Galileo
+Sentence 7119: Galileo
+Sentence 7120: Kepler
+Sentence 7132: Stevin
+Sentence 7132: Girard Desargues
+Sentence 7135: Lambert
+Sentence 7143: PETER SMITH
+Sentence 7145: Blazwick
+Sentence 7145: Mark Francis
+Sentence 7145: Peter Wollen
+Sentence 7145: Malcolm Imrie
+Sentence 7148: Elisabeth Sussman
+Sentence 7151: Georges Pompidou
+Sentence 7152: Mark Francis
+Sentence 7152: Peter Wollen
+Sentence 7152: Paul Herv
+Sentence 7153: Francis
+Sentence 7159: Ralph Rumney
+Sentence 7159: Bernstein
+Sentence 7162: Mark Francis
+Sentence 7163: Francis
+Sentence 7165: Francis
+Sentence 7171: Getty Grant
+Sentence 7172: Bier
+Sentence 7180: Francis
+Sentence 7201: Breton
+Sentence 7203: Thomas Y
+Sentence 7203: Levin
+Sentence 7205: Levin
+Sentence 7206: Levin
+Sentence 7207: Levin
+Sentence 7209: Levin
+Sentence 7211: Levin
+Sentence 7213: Levin
+Sentence 7215: Levin
+Sentence 7216: Levin
+Sentence 7217: Levin
+Sentence 7219: Levin
+Sentence 7221: Levin
+Sentence 7222: Levin
+Sentence 7224: Levin
+Sentence 7225: Levin
+Sentence 7226: Levin
+Sentence 7227: Levin
+Sentence 7228: Hegel
+Sentence 7229: Levin
+Sentence 7230: Levin
+Sentence 7233: Levin
+Sentence 7234: Levin
+Sentence 7241: Levin
+Sentence 7246: Levin
+Sentence 7247: Levin
+Sentence 7250: Levin
+Sentence 7252: Levin
+Sentence 7258: King Mob
+Sentence 7258: Jamie Reid
+Sentence 7258: Vivienne
+Sentence 7258: King
+Sentence 7259: Henri Lefebvre
+Sentence 7261: Anton Pannekoek
+Sentence 7277: Levin
+Sentence 7285: Frank Mort
+Sentence 7288: Lyotard
+Sentence 7294: Levin
+Sentence 7298: Bernstein
+Sentence 7302: Francis
+Sentence 7307: L
+Sentence 7309: Pistoletto
+Sentence 7312: Elisabeth Sussmann
+Sentence 7315: George Steiner
+Sentence 7317: Christopher Gray
+Sentence 7319: Gray
+Sentence 7341: Raymond Williams
+Sentence 7350: William Morris
+Sentence 7355: Jorn
+Sentence 7373: Raymond Williams
+Sentence 7378: Martin Wainwright
+Sentence 7379: Sam Coombes
+Sentence 7381: Oliver Messiaen
+Sentence 7381: Pierre Boulez
+Sentence 7381: John Cage
+Sentence 7383: Robert Worby
+Sentence 7390: Paul Chamberlain
+Sentence 7391: Sunjeev Singh
+Sentence 7394: Fartown
+Sentence 7400: Joanne Faley
+Sentence 7401: Robert Worby
+Sentence 7401: Stephen
+Sentence 7402: Sam
+Sentence 7403: Huddersfield
+Sentence 7406: Stephanie Nettell
+Sentence 7409: George '
+Sentence 7411: Grammar
+Sentence 7412: W
+Sentence 7416: Hugh Hebert
+Sentence 7418: Paul Hill
+Sentence 7421: Gerry
+Sentence 7430: McKee
+Sentence 7430: Ros Franey
+Sentence 7432: Carole Richardson
+Sentence 7438: Hill
+Sentence 7442: Conlon
+Sentence 7442: Bailey
+Sentence 7447: Conlon
+Sentence 7453: Claudia Milne
+Sentence 7453: Martin Short
+Sentence 7454: Christopher Hudson
+Sentence 7457: Edward Greenfield
+Sentence 7457: Cool
+Sentence 7458: Maria Callas
+Sentence 7460: Jason
+Sentence 7463: Mike Ashman
+Sentence 7463: Bernard
+Sentence 7475: Claire Powell
+Sentence 7477: Mike Ashman
+Sentence 7479: Jason
+Sentence 7482: Bernard
+Sentence 7485: Robert Lloyd
+Sentence 7485: King
+Sentence 7485: Renee Fleming
+Sentence 7485: Jason '
+Sentence 7486: Mark Ermler
+Sentence 7487: Edward Greenfield
+Sentence 7488: Maria Callas
+Sentence 7490: Jason
+Sentence 7493: Mike Ashman
+Sentence 7493: Bernard
+Sentence 7505: Claire Powell
+Sentence 7507: Mike Ashman
+Sentence 7509: Jason
+Sentence 7512: Bernard
+Sentence 7515: Robert Lloyd
+Sentence 7515: King
+Sentence 7515: Renee Fleming
+Sentence 7515: Jason '
+Sentence 7516: Mark Ermler
+Sentence 7519: Bowen
+Sentence 7526: Volker Banfield
+Sentence 7528: Concerto
+Sentence 7532: Elgar
+Sentence 7533: Christopher van Kampen
+Sentence 7536: Istvan
+Sentence 7536: Adrienne
+Sentence 7538: Paul Fisher
+Sentence 7539: Martha Darby
+Sentence 7544: Martha
+Sentence 7552: Brown
+Sentence 7552: Martha
+Sentence 7554: Thomas de Mallet
+Sentence 7554: de Angelis
+Sentence 7558: Michelle
+Sentence 7558: O'Brien
+Sentence 7559: Michelle
+Sentence 7564: Robert Palmer
+Sentence 7586: Inside Michelle
+Sentence 7620: Michelle
+Sentence 7624: Alex Brummer
+Sentence 7629: Mr
+Sentence 7629: James Baker
+Sentence 7631: Grande
+Sentence 7635: Mr Baker
+Sentence 7641: President Bush
+Sentence 7643: Secretary Nicholas Brady
+Sentence 7647: President Bush
+Sentence 7648: Mr Bush
+Sentence 7656: Mr
+Sentence 7656: John Wakeham
+Sentence 7665: Hanson
+Sentence 7666: Ben Laurance
+Sentence 7667: Grenfell
+Sentence 7667: Hanson
+Sentence 7668: Hanson
+Sentence 7669: Hanson
+Sentence 7670: Morgan Grenfell
+Sentence 7672: Banque
+Sentence 7673: Grenfell
+Sentence 7677: Compagnie Financiere
+Sentence 7682: Roger
+Sentence 7683: Rack
+Sentence 7683: Shop
+Sentence 7689: Rack
+Sentence 7695: Roy Bishko
+Sentence 7703: Bishko
+Sentence 7704: Mr Bishko
+Sentence 7712: Mr Bishko
+Sentence 7715: Mr Bishko
+Sentence 7716: Mr Bishko
+Sentence 7719: Mary Brasier
+Sentence 7720: SHEARSON
+Sentence 7723: Shearson
+Sentence 7724: Shearson
+Sentence 7725: Dow Jones
+Sentence 7725: Steven Fagan
+Sentence 7726: Shearson
+Sentence 7728: Shearson
+Sentence 7733: Albert King
+Sentence 7739: Dow Jones
+Sentence 7749: Christopher Huhne
+Sentence 7750: Dan Atkinson
+Sentence 7750: Anthony Hilton
+Sentence 7753: Coniston
+Sentence 7756: Roland Franklin
+Sentence 7757: Mr Franklin
+Sentence 7762: Lisa Buckingham
+Sentence 7763: John Gunn
+Sentence 7770: Mr Gunn
+Sentence 7771: Mr Gunn
+Sentence 7775: Mr Gunn
+Sentence 7779: Mr Gunn
+Sentence 7781: Caparo
+Sentence 7782: Swraj Paul '
+Sentence 7782: Caparo
+Sentence 7785: Dr Paul
+Sentence 7786: Roy Watts
+Sentence 7787: Dr Paul knows
+Sentence 7793: Mr
+Sentence 7793: Michael Rowley
+Sentence 7796: Paul Hanson
+Sentence 7804: Sanderson
+Sentence 7807: Ron Brierley
+Sentence 7807: Tozer Kemsley
+Sentence 7816: Rack
+Sentence 7818: Govett
+Sentence 7819: Grenfell
+Sentence 7820: Morgan
+Sentence 7829: Teresa Hunter
+Sentence 7836: Nigel Herrick
+Sentence 7842: Mr Herrick
+Sentence 7845: Ross
+Sentence 7851: Christopher Huhne
+Sentence 7856: Sir Alan Walters
+Sentence 7859: President Mitterrand
+Sentence 7870: Chancellor
+Sentence 7870: Mr Lawson
+Sentence 7880: Michael Artis
+Sentence 7891: Mr
+Sentence 7891: Bayoumi
+Sentence 7904: Michael Artis
+Sentence 7906: Bayoumi
+Sentence 7907: Jaguar
+Sentence 7908: Andrew
+Sentence 7908: Editor
+Sentence 7911: Mr Doug Henderson
+Sentence 7911: Mr Derek Barron
+Sentence 7918: Larry Elliott
+Sentence 7919: S
+Sentence 7919: Sir
+Sentence 7920: Prime
+Sentence 7920: Professor
+Sentence 7920: Alan Walters
+Sentence 7920: Sir Leon
+Sentence 7923: Downing
+Sentence 7924: Sir Leon
+Sentence 7927: Sir
+Sentence 7930: Sir Leon
+Sentence 7933: John Palmer
+Sentence 7933: Peter Large
+Sentence 7937: Sir
+Sentence 7941: Mr
+Sentence 7941: Eric Forth
+Sentence 7944: Rupert
+Sentence 7945: Mr
+Sentence 7947: Mr
+Sentence 7948: Sir Bryan Carsberg
+Sentence 7951: Sir Bryan
+Sentence 7956: Sir James Goldsmith
+Sentence 7957: Sir James '
+Sentence 7957: Credit Lyonnais
+Sentence 7959: Paribas
+Sentence 7961: Paribas
+Sentence 7961: Midi
+Sentence 7967: Gigi
+Sentence 7968: Gigi
+Sentence 7971: Marcel Richard
+Sentence 7971: Perrier
+Sentence 7977: Peck
+Sentence 7978: Peck
+Sentence 7978: Robin Stoddart
+Sentence 7980: Del Monte
+Sentence 7981: Tai
+Sentence 7981: Sung Hung Kai
+Sentence 7984: Peck
+Sentence 7986: Mr
+Sentence 7986: Peck
+Sentence 7987: Peck
+Sentence 7987: Monte
+Sentence 7990: Daniel John
+Sentence 7993: Mr
+Sentence 7993: Dale
+Sentence 7995: Sir Patrick Mayhew
+Sentence 7996: Graham Gooch
+Sentence 7996: Sergeant Ken Morgan
+Sentence 7996: Fraud
+Sentence 7998: Mr
+Sentence 8001: Mr
+Sentence 8008: Mr
+Sentence 8009: General
+Sentence 8018: Clapham
+Sentence 8025: Mr
+Sentence 8025: Sir Anthony Hidden
+Sentence 8031: Parkinson
+Sentence 8035: John
+Sentence 8041: Mr
+Sentence 8041: Kenneth Clarke
+Sentence 8047: Mr Clarke
+Sentence 8047: Nichol
+Sentence 8048: Mr Clarke
+Sentence 8048: Mr
+Sentence 8056: Mr Duncan Nichol
+Sentence 8061: McCarthy
+Sentence 8064: Mr Clarke
+Sentence 8087: Mr
+Sentence 8087: Martin Lee
+Sentence 8087: Wah
+Sentence 8093: Mr Douglas
+Sentence 8093: Simon
+Sentence 8096: Mr
+Sentence 8097: Mr Marshall Coleman
+Sentence 8098: Mr Wilder
+Sentence 8100: Mr David Dinkins
+Sentence 8100: Mr
+Sentence 8100: Rudolph Giuliani
+Sentence 8102: Anna Tomforde
+Sentence 8104: Wolfgang Meyer
+Sentence 8107: Mr
+Sentence 8107: Krenz
+Sentence 8111: Prime
+Sentence 8111: Mr Willi
+Sentence 8112: Mr
+Sentence 8118: Mr Meyer
+Sentence 8120: Mr
+Sentence 8120: Manfred Stolpe
+Sentence 8121: Mr Stolpe
+Sentence 8121: Mr Krenz
+Sentence 8127: Mr Krenz
+Sentence 8131: Keith Harper
+Sentence 8131: David Brindle
+Sentence 8131: Patrick
+Sentence 8138: Mr
+Sentence 8138: Kenneth Clarke
+Sentence 8139: Mr
+Sentence 8139: Clarke
+Sentence 8143: Mr Duncan Nichol
+Sentence 8144: Mr
+Sentence 8151: Mr Clarke
+Sentence 8154: Mr Clarke
+Sentence 8155: Mr
+Sentence 8157: Mr
+Sentence 8161: Mr Clarke
+Sentence 8162: Mr Robin Cook
+Sentence 8162: Mr Clarke
+Sentence 8164: Mr
+Sentence 8164: Chris Spry
+Sentence 8169: Mr Douglas
+Sentence 8169: Simon
+Sentence 8171: Mr
+Sentence 8172: Mr Marshall Coleman
+Sentence 8173: Mr Wilder
+Sentence 8175: Mr David Dinkins
+Sentence 8176: Mr
+Sentence 8176: Rudolph Giuliani
+Sentence 8184: Mr Neil Kinnock
+Sentence 8184: Mr Paul Boateng
+Sentence 8189: Runcie
+Sentence 8198: Clapham
+Sentence 8199: Michael Smith
+Sentence 8199: Alan Travis
+Sentence 8200: Clapham
+Sentence 8201: Sir Anthony Hidden
+Sentence 8204: Sir Anthony
+Sentence 8208: Mr
+Sentence 8209: Sir Robert Reid
+Sentence 8211: Sir Anthony
+Sentence 8212: Mr
+Sentence 8212: Sir Robert
+Sentence 8212: Sir Anthony
+Sentence 8213: Mr Parkinson
+Sentence 8214: Mr
+Sentence 8217: Sir Anthony
+Sentence 8219: Mr
+Sentence 8219: John Prescott
+Sentence 8220: Sir Anthony
+Sentence 8221: Mr Parkinson
+Sentence 8223: Sir Robert
+Sentence 8223: Sir Anthony
+Sentence 8226: Mr Brian Hemingway
+Sentence 8227: Mr Clifford
+Sentence 8228: Sir Robert
+Sentence 8228: Mr
+Sentence 8232: Lynn Hooper
+Sentence 8233: Mr
+Sentence 8233: Peter Owen
+Sentence 8239: Barnett
+Sentence 8241: Emma Louise Hyde
+Sentence 8242: Paul
+Sentence 8246: John Carvel
+Sentence 8248: Mr David Waddington
+Sentence 8249: Bill
+Sentence 8249: Waddington
+Sentence 8252: Mr Waddington
+Sentence 8254: Mr Douglas
+Sentence 8258: John Carvel
+Sentence 8258: Paul Hoyland
+Sentence 8259: DAVID Waddington
+Sentence 8260: Mr Waddington
+Sentence 8260: Mr
+Sentence 8260: Gerry Collins
+Sentence 8261: Mr Waddington
+Sentence 8263: Mr Waddington
+Sentence 8264: Mr Douglas
+Sentence 8265: Maurice
+Sentence 8265: Murville
+Sentence 8265: Reverend Mark Santer
+Sentence 8265: Bishop
+Sentence 8265: David Good
+Sentence 8268: Santer
+Sentence 8271: Patrick
+Sentence 8272: Mr Neil Kinnock
+Sentence 8272: Mr Paul Boateng
+Sentence 8273: Mr Boateng
+Sentence 8273: Mr Kinnock
+Sentence 8274: Mr Kinnock
+Sentence 8274: Clare
+Sentence 8275: Ms
+Sentence 8275: Mr
+Sentence 8275: Michael Meacher
+Sentence 8276: Mo Mowlam
+Sentence 8276: Gordon Brown
+Sentence 8277: Ms Margaret Beckett
+Sentence 8277: Mr
+Sentence 8278: Mr
+Sentence 8278: Roger Stott
+Sentence 8278: Ms
+Sentence 8279: Nigel
+Sentence 8279: Mr
+Sentence 8279: Morley
+Sentence 8279: Mr Tony Worthington
+Sentence 8280: Mr
+Sentence 8280: John Garrett
+Sentence 8282: Mr Henry McLeish
+Sentence 8282: Mr Tony Blair
+Sentence 8285: Mr Boateng
+Sentence 8286: Mr Boateng
+Sentence 8287: Mr Ken Livingstone
+Sentence 8288: Brent
+Sentence 8291: Mr Kinnock
+Sentence 8291: Roy Hattersley
+Sentence 8293: Mr Alistair Darling
+Sentence 8294: Mr Boateng
+Sentence 8303: Mr Paul Boateng
+Sentence 8305: Runcie
+Sentence 8315: Keith Harper
+Sentence 8315: David Brindle
+Sentence 8315: Patrick
+Sentence 8317: Mr
+Sentence 8317: Kenneth Clarke
+Sentence 8319: Mr Duncan Nichol
+Sentence 8320: Mr
+Sentence 8320: Clarke
+Sentence 8323: Mr
+Sentence 8323: Roger Poole
+Sentence 8324: Mr
+Sentence 8329: Mr Clarke
+Sentence 8332: Mr Clarke
+Sentence 8333: Mr
+Sentence 8335: Mr
+Sentence 8339: Mr Clarke
+Sentence 8340: Mr Robin Cook
+Sentence 8340: Mr Clarke
+Sentence 8342: Mr Bernard Weatherill
+Sentence 8342: Mr Clarke
+Sentence 8343: Mr
+Sentence 8343: Chris Spry
+Sentence 8348: Greater
+Sentence 8351: Keith Harper
+Sentence 8351: David Fairhall
+Sentence 8353: Mr
+Sentence 8353: Chris Spry
+Sentence 8354: John
+Sentence 8360: Mr Tom Crosby
+Sentence 8363: Mr
+Sentence 8363: Chris Humphreys
+Sentence 8366: Kenneth Clarke
+Sentence 8377: Richard Norton-Taylor
+Sentence 8383: Michael White
+Sentence 8383: Political
+Sentence 8384: Sir
+Sentence 8387: Prime
+Sentence 8387: Mr
+Sentence 8387: Nigel Lawson
+Sentence 8387: Lawson
+Sentence 8388: Sir
+Sentence 8390: Sir Leon
+Sentence 8392: Lawson
+Sentence 8395: Sir
+Sentence 8396: Mr
+Sentence 8396: Kenneth Baker
+Sentence 8400: Sir Anthony Meyer
+Sentence 8402: Mr Neil Kinnock
+Sentence 8402: Mr Lawson
+Sentence 8405: Prime
+Sentence 8406: Sir
+Sentence 8409: James Erlichman
+Sentence 8411: Mr
+Sentence 8411: John Gummer
+Sentence 8422: Dr David Clark
+Sentence 8423: Gummer
+Sentence 8427: Jane Rosen
+Sentence 8433: General
+Sentence 8435: Mr Thomas Pickering
+Sentence 8440: Mr Javier Perez de
+Sentence 8442: King
+Sentence 8443: David Hencke Westminster
+Sentence 8447: Mr
+Sentence 8447: Bob Clay
+Sentence 8448: Mr Keith Welsby
+Sentence 8449: Govt Bill
+Sentence 8450: Paul Nettleton
+Sentence 8451: Bill
+Sentence 8452: Mr
+Sentence 8452: Bob Cryer
+Sentence 8455: Mr Christopher Chope
+Sentence 8456: Mr
+Sentence 8457: Mr
+Sentence 8457: Soley
+Sentence 8459: Aldington
+Sentence 8461: Mr Charles Gray
+Sentence 8461: Aldington
+Sentence 8462: Mr Zivkovic
+Sentence 8463: Aldington
+Sentence 8463: Mr Zivkovic
+Sentence 8467: Mr Gray
+Sentence 8468: Mr Zivkovic
+Sentence 8469: Mr Gray
+Sentence 8470: Mr Zivkovic
+Sentence 8472: Karl Marx
+Sentence 8473: Mr Zivkovic
+Sentence 8473: Aldington
+Sentence 8473: Mr Nikolai Tolstoy
+Sentence 8473: Mr
+Sentence 8473: Nigel
+Sentence 8474: Mr Zivkovic
+Sentence 8483: Bill
+Sentence 8485: Lord Williams
+Sentence 8486: Lord Young
+Sentence 8488: Lawson
+Sentence 8489: Martin Linton
+Sentence 8490: Mr Neil Kinnock
+Sentence 8490: Prime
+Sentence 8490: Brian Walden
+Sentence 8491: Mr Lawson
+Sentence 8495: Kinnock
+Sentence 8495: Mr Lawson
+Sentence 8495: Chancellor
+Sentence 8495: Prime
+Sentence 8495: Sir Alan Walter
+Sentence 8496: Mr Kinnock
+Sentence 8496: Chancellor
+Sentence 8497: Chancellor
+Sentence 8500: Mr Lawson
+Sentence 8502: Mr Charles Kennedy
+Sentence 8502: Sir
+Sentence 8503: Prime
+Sentence 8503: Mr Lawson
+Sentence 8505: Prime
+Sentence 8506: Kinnock
+Sentence 8511: Dennis Barker
+Sentence 8512: Jack Kirkland
+Sentence 8514: Prime
+Sentence 8533: Paul Brown
+Sentence 8534: Thatcher
+Sentence 8538: Mr David Trippier
+Sentence 8542: Mr
+Sentence 8542: Steve Elsworth
+Sentence 8543: Mr
+Sentence 8554: Mr
+Sentence 8554: Chris Patten
+Sentence 8556: David Hencke Westminster
+Sentence 8558: Young
+Sentence 8559: Llanelli
+Sentence 8564: Mr Terry Davis
+Sentence 8564: Hill
+Sentence 8570: Nigel
+Sentence 8571: Ian
+Sentence 8572: Downing
+Sentence 8573: Chancellor
+Sentence 8577: Nigel
+Sentence 8583: Mr Lawson
+Sentence 8584: Nigel
+Sentence 8585: Sir Alan
+Sentence 8588: Mr Lawson
+Sentence 8592: Mr Lawson
+Sentence 8603: Mr
+Sentence 8603: Peter Brooke
+Sentence 8603: Fein
+Sentence 8606: KENNETH
+Sentence 8606: Clarke
+Sentence 8608: Mr Clarke
+Sentence 8612: Hogg
+Sentence 8613: Mellor
+Sentence 8616: Keith Harper
+Sentence 8616: David Brindle
+Sentence 8616: Patrick
+Sentence 8618: Mr
+Sentence 8618: Kenneth Clarke
+Sentence 8618: Mr Duncan Nichol
+Sentence 8619: Mr
+Sentence 8619: Clarke
+Sentence 8621: Mr
+Sentence 8627: Mr Clarke
+Sentence 8628: Mr Clarke
+Sentence 8629: Mr
+Sentence 8631: Mr
+Sentence 8635: Mr Clarke
+Sentence 8636: Mr Bernard Weatherhill
+Sentence 8636: Mr Clarke
+Sentence 8637: Mr Robin Cook
+Sentence 8637: Mr Clarke
+Sentence 8640: Mr
+Sentence 8640: Chris Spry
+Sentence 8641: Mr
+Sentence 8641: Roger Poole
+Sentence 8643: Mr Clarke
+Sentence 8645: Greater
+Sentence 8647: Runcie
+Sentence 8648: Walter Schwarz
+Sentence 8655: Dr Robert Runcie
+Sentence 8656: Dr David Jenkins
+Sentence 8659: Runcie
+Sentence 8661: Roman
+Sentence 8663: Runcie
+Sentence 8664: Runcie
+Sentence 8665: Runcie
+Sentence 8666: Graham
+Sentence 8666: Bishop
+Sentence 8667: Mr
+Sentence 8667: John Gummer
+Sentence 8669: David Silk
+Sentence 8674: Mobil Petrel
+Sentence 8674: Fawley
+Sentence 8678: Mrs Margaret Ashton
+Sentence 8680: Paul Worrell
+Sentence 8684: Ollersett
+Sentence 8686: Simon Beavis Labour
+Sentence 8689: Nick Mitchell
+Sentence 8694: Anthony Hidden
+Sentence 8697: Mr
+Sentence 8697: Jimmy Knapp
+Sentence 8702: Clapham
+Sentence 8706: Sir Robert Reid
+Sentence 8712: Sir Patrick Mayhew
+Sentence 8712: Peter Wright
+Sentence 8713: Mr
+Sentence 8713: Richard Aikens
+Sentence 8713: Lords
+Sentence 8714: Mr
+Sentence 8720: Mr
+Sentence 8726: Tim Radford
+Sentence 8727: Mariner
+Sentence 8727: Biography
+Sentence 8728: Richard Holmes
+Sentence 8728: Shelley
+Sentence 8730: Stephen Gill
+Sentence 8730: William
+Sentence 8730: Clair
+Sentence 8731: Young
+Sentence 8732: Novel
+Sentence 8732: Salman Rushdie
+Sentence 8733: Martin Amis
+Sentence 8733: Lindsay Clarke
+Sentence 8734: Jonathan
+Sentence 8735: Christopher
+Sentence 8735: Redeemer
+Sentence 8735: Alexander Stuart
+Sentence 8735: Hamilton
+Sentence 8736: James Hamilton-Paterson
+Sentence 8736: Hugh Scott
+Sentence 8738: Michael Donaghy
+Sentence 8739: Shibboleth
+Sentence 8740: Peter Porter
+Sentence 8743: William Hill
+Sentence 8743: Lindsay Clarke
+Sentence 8744: Dunn
+Sentence 8744: Christopher Nolan
+Sentence 8744: Paul Sayer
+Sentence 8746: Dyer Legal
+Sentence 8747: Mr Allan
+Sentence 8749: Anthony Hidden
+Sentence 8756: Bingham
+Sentence 8759: David Sharrock
+Sentence 8760: Sir Anthony Hidden
+Sentence 8764: Mr Brian Hemingway
+Sentence 8766: Mr
+Sentence 8770: Mr
+Sentence 8774: Mr Alex McClymont
+Sentence 8779: Clapham
+Sentence 8779: Mr
+Sentence 8790: John
+Sentence 8794: Sir David Wilson
+Sentence 8796: Emperor
+Sentence 8797: Prince Charles
+Sentence 8800: Mr Norman Foster
+Sentence 8803: David
+Sentence 8804: MR
+Sentence 8804: PETER Brooke
+Sentence 8804: Fein
+Sentence 8805: Mr
+Sentence 8811: Keith Harper
+Sentence 8811: David Brindle
+Sentence 8811: Patrick
+Sentence 8813: Mr
+Sentence 8813: Kenneth Clarke
+Sentence 8816: Mr Duncan Nichol
+Sentence 8821: Mr Clarke
+Sentence 8825: Mr Clarke
+Sentence 8827: Mr Robin Cook
+Sentence 8827: Mr Clarke
+Sentence 8828: Mr
+Sentence 8828: Roger Poole
+Sentence 8830: Mr Clarke
+Sentence 8831: Mr
+Sentence 8831: Chris Spry
+Sentence 8832: John
+Sentence 8836: Mr Tom Crosby
+Sentence 8837: Mr
+Sentence 8837: Chris Humphreys
+Sentence 8837: Kenneth Clarke
+Sentence 8840: Mr Clarke
+Sentence 8842: Greater
+Sentence 8844: David Fairhall
+Sentence 8851: Ulster
+Sentence 8858: Richard Norton-Taylor
+Sentence 8868: S
+Sentence 8868: Florence
+Sentence 8868: Peter Hetherington
+Sentence 8869: Bob Palmer
+Sentence 8870: Mr Palmer
+Sentence 8872: Mr Palmer
+Sentence 8874: Carol Laula
+Sentence 8876: Joni
+Sentence 8876: Mitchell
+Sentence 8876: Joan Baez
+Sentence 8876: Carol
+Sentence 8877: Mr Palmer
+Sentence 8878: Phil
+Sentence 8878: Jessye Norman
+Sentence 8878: Pavarotti
+Sentence 8880: Bill Bryden
+Sentence 8882: Andrew
+Sentence 8886: Dr Robert Runcie
+Sentence 8888: Runcie
+Sentence 8892: Runcie
+Sentence 8893: Canon
+Sentence 8893: John Dale
+Sentence 8896: Rev David Holloway
+Sentence 8898: Mr
+Sentence 8898: Michael Oakley
+Sentence 8900: Canon
+Sentence 8900: Frances Briscoe
+Sentence 8901: James Thompson
+Sentence 8903: David Jenkins
+Sentence 8904: Timothy Bavin
+Sentence 8904: Bishop
+Sentence 8906: John Habgood
+Sentence 8908: GRAHAM
+Sentence 8910: Mr Robert Holmes
+Sentence 8910: Georgina Henry
+Sentence 8911: Mr Holmes
+Sentence 8918: David Hencke Westminster
+Sentence 8933: V
+Sentence 8933: VI
+Sentence 8935: Dyer Legal
+Sentence 8936: Sir Ian Percival
+Sentence 8936: Sir Ian
+Sentence 8937: Mr
+Sentence 8937: Sir Ian
+Sentence 8937: John Samuels
+Sentence 8938: Sir Ian
+Sentence 8938: Mr
+Sentence 8940: Sir Ian
+Sentence 8940: Mr Samuels
+Sentence 8941: Mr Samuels
+Sentence 8942: Sir Ian
+Sentence 8942: Mr Samuels
+Sentence 8944: Mr
+Sentence 8944: Michael Beloff
+Sentence 8944: Sir Ian
+Sentence 8944: Mr Samuels
+Sentence 8945: Ian
+Sentence 8945: Mr
+Sentence 8946: Mr Beloff
+Sentence 8949: Andrew Rawnsley
+Sentence 8953: Bottomley
+Sentence 8958: Bottomley
+Sentence 8960: Mr Speaker
+Sentence 8960: James Paice
+Sentence 8962: Mr
+Sentence 8963: Bottomley
+Sentence 8965: Mr
+Sentence 8968: James Pawsey
+Sentence 8972: Pawsey
+Sentence 8972: Kenneth Clarke
+Sentence 8974: Prime
+Sentence 8976: Prime
+Sentence 8982: Neil Kinnock
+Sentence 8982: Nigel Lawson
+Sentence 8985: Cranley
+Sentence 8988: George
+Sentence 8989: Mr
+Sentence 8989: Prime
+Sentence 8992: George
+Sentence 8994: Mr Tony Newton
+Sentence 8995: Mr
+Sentence 8996: Mr Robin Cook
+Sentence 8996: Bottomley
+Sentence 8997: Mr
+Sentence 8997: Peter Lilley
+Sentence 8999: Mr
+Sentence 8999: Richard Luce
+Sentence 8999: Mr Mark Fisher
+Sentence 9003: Western
+Sentence 9004: Mr
+Sentence 9004: Kenneth Clarke
+Sentence 9005: Simon Crine
+Sentence 9006: Mr Albert Booth
+Sentence 9007: Mr
+Sentence 9007: John Willman
+Sentence 9008: Bill
+Sentence 9009: Bill
+Sentence 9011: David Sharrock
+Sentence 9013: Sir Anthony
+Sentence 9014: Brian Hemingway
+Sentence 9014: Clapham
+Sentence 9016: Derek Bumstead
+Sentence 9016: Mr
+Sentence 9017: Peter Dray
+Sentence 9018: James Lippett
+Sentence 9019: Callander
+Sentence 9020: Geoffrey Bailey
+Sentence 9021: John Deane
+Sentence 9022: Roger Penny
+Sentence 9023: Robert Davies
+Sentence 9024: Graham Brown
+Sentence 9025: Clifford
+Sentence 9027: Brian Hemingway
+Sentence 9027: Clifford
+Sentence 9028: Clarke
+Sentence 9029: Patrick
+Sentence 9030: Mr
+Sentence 9030: Kenneth Clarke
+Sentence 9032: Mr Clarke
+Sentence 9034: Mr
+Sentence 9034: Nigel
+Sentence 9035: Newham
+Sentence 9035: Mr Clarke
+Sentence 9040: Mr Robin Cook
+Sentence 9043: Mr Clarke
+Sentence 9048: Mr Charles Kennedy
+Sentence 9051: Mr Jerry
+Sentence 9052: Mr Clarke
+Sentence 9055: Paul Nettleton
+Sentence 9057: Sir Robert Reid
+Sentence 9058: Mr Parkinson
+Sentence 9058: Sir Anthony Hidden
+Sentence 9066: Mr Parkinson
+Sentence 9069: Mr
+Sentence 9069: John Prescott
+Sentence 9071: Mr Prescott
+Sentence 9071: Mr
+Sentence 9072: Hidden
+Sentence 9073: Anthony Hidden
+Sentence 9073: David Sharrock
+Sentence 9089: Gorbachev
+Sentence 9090: John Rettie
+Sentence 9093: Metro
+Sentence 9099: Mr Boris Yeltsin
+Sentence 9100: Ligachev
+Sentence 9104: Mr Gorbachev
+Sentence 9105: President
+Sentence 9112: Lenin
+Sentence 9119: Mr Gorbachev
+Sentence 9123: David Sharrock
+Sentence 9124: Clapham
+Sentence 9125: Mr Alex McClymont
+Sentence 9138: George '
+Sentence 9141: Mr
+Sentence 9141: Roger Calvert
+Sentence 9144: David Sharrock
+Sentence 9174: David Gow
+Sentence 9180: Mr
+Sentence 9180: McAvoy
+Sentence 9182: Mr McAvoy
+Sentence 9184: Mr McAvoy
+Sentence 9185: Mr
+Sentence 9185: Green
+Sentence 9186: Mr Jack Straw
+Sentence 9189: Richard Norton-Taylor
+Sentence 9195: Michael Palumbo
+Sentence 9195: Kurt Waldheim
+Sentence 9195: President
+Sentence 9196: Betrayed
+Sentence 9197: Marshal Pietro Badoglio
+Sentence 9198: Prime Minister
+Sentence 9200: Churchill
+Sentence 9203: Roatta
+Sentence 9208: Constable David Mellor
+Sentence 9210: Antrim
+Sentence 9210: Mr Robert Colin
+Sentence 9210: Roman Catholicism
+Sentence 9215: David Bean
+Sentence 9219: Mr
+Sentence 9219: McGurk
+Sentence 9219: Rambler
+Sentence 9220: Boggerburger
+Sentence 9228: Pie
+Sentence 9232: Pie
+Sentence 9237: McGurk
+Sentence 9244: McGurk
+Sentence 9245: McGurk
+Sentence 9259: Why Charlotte
+Sentence 9259: Du Cann
+Sentence 9270: Roseanne
+Sentence 9270: Kate
+Sentence 9270: Allie
+Sentence 9272: Kate
+Sentence 9272: Allie
+Sentence 9272: Roseanne
+Sentence 9276: Mike Leigh
+Sentence 9296: Chunn
+Sentence 9297: Sheffield
+Sentence 9297: Geoffrey Beattie
+Sentence 9306: Boyce
+Sentence 9318: Boyce
+Sentence 9327: Jimmy
+Sentence 9331: Jimmy
+Sentence 9340: Jimmy Boyce
+Sentence 9341: Jimmy
+Sentence 9343: Colin
+Sentence 9346: Colin
+Sentence 9347: Sheffield
+Sentence 9349: Mike '
+Sentence 9354: Jimmy
+Sentence 9356: Mike '
+Sentence 9359: Richard Holmes
+Sentence 9363: Jimmy
+Sentence 9366: Richard
+Sentence 9370: Richard
+Sentence 9371: Jimmy
+Sentence 9373: Richard
+Sentence 9375: Jimmy
+Sentence 9383: Sheffield
+Sentence 9385: Richard Holmes
+Sentence 9391: Keith Wells
+Sentence 9392: Derry
+Sentence 9393: Keith
+Sentence 9400: Gibbs
+Sentence 9400: GIBBS
+Sentence 9404: Gibbs
+Sentence 9410: Colin
+Sentence 9411: Jimmy
+Sentence 9412: Richard Holmes
+Sentence 9415: Jimmy
+Sentence 9418: Richard Holmes
+Sentence 9419: Jimmy
+Sentence 9420: Jimmy
+Sentence 9421: Keith Wells
+Sentence 9426: Geoffrey Beattie
+Sentence 9426: Richard Holmes
+Sentence 9426: GEOFFREY
+Sentence 9426: BEATTIE
+Sentence 9426: Jimmy
+Sentence 9429: Queen
+Sentence 9429: Sandwell
+Sentence 9429: Mr
+Sentence 9429: Hutchison
+Sentence 9443: Mr
+Sentence 9443: Hutchison
+Sentence 9457: Lambeth
+Sentence 9467: John Cherryman
+Sentence 9467: Norman
+Sentence 9467: Michael Arnold
+Sentence 9468: Shiranikha
+Sentence 9469: Tim Radford
+Sentence 9478: Tim
+Sentence 9497: Edward
+Sentence 9516: Tom Shakeshaft
+Sentence 9526: Laura
+Sentence 9526: William
+Sentence 9527: William
+Sentence 9527: Prince Charles
+Sentence 9533: Mr Ken
+Sentence 9543: William
+Sentence 9549: Mr
+Sentence 9559: Michele Hanson
+Sentence 9560: Beverley Lewis
+Sentence 9560: Adrienne Baker
+Sentence 9570: Jonathan Rixon
+Sentence 9574: Stephanie
+Sentence 9578: Stephanie
+Sentence 9581: Jonathan
+Sentence 9586: Ian
+Sentence 9590: John
+Sentence 9606: Richard Tomlinson
+Sentence 9606: Thomas Delarue
+Sentence 9629: Janet
+Sentence 9631: Shirley
+Sentence 9637: Leora
+Sentence 9639: Zena
+Sentence 9643: Jean
+Sentence 9644: Jean
+Sentence 9667: Sir Peter Imbert
+Sentence 9669: Walter Easey
+Sentence 9669: Sir Kenneth
+Sentence 9673: Sir Peter '
+Sentence 9675: Sir Kenneth
+Sentence 9676: Mr
+Sentence 9680: Pearman
+Sentence 9684: Margaret Hodge
+Sentence 9688: Brent
+Sentence 9691: Sir Peter Imbert
+Sentence 9692: Sir Peter Imbert
+Sentence 9693: Sir Peter '
+Sentence 9696: Sir Peter
+Sentence 9696: Sir Kenneth
+Sentence 9698: Kenneth
+Sentence 9699: Sir Peter
+Sentence 9700: Kenneth
+Sentence 9703: Sir Kenneth
+Sentence 9705: Scarman
+Sentence 9709: Sir Kenneth
+Sentence 9711: Sir Kenneth
+Sentence 9717: Sir Kenneth
+Sentence 9719: Sir Kenneth
+Sentence 9719: Sir Peter Imbert
+Sentence 9721: Sir Peter
+Sentence 9725: Sir Peter
+Sentence 9729: Sir Kenneth
+Sentence 9730: Sir Peter declared
+Sentence 9732: Sir Peter
+Sentence 9735: Sir Peter
+Sentence 9745: Sir Peter Imbert
+Sentence 9747: Sir Peter
+Sentence 9748: Sir Peter became
+Sentence 9749: David Waddington
+Sentence 9749: Sir Peter '
+Sentence 9751: Sir Peter
+Sentence 9753: Sir Peter '
+Sentence 9753: Olins
+Sentence 9761: John
+Sentence 9762: Olins
+Sentence 9763: Olins
+Sentence 9765: Charles Pollard
+Sentence 9768: Sir Peter Imbert
+Sentence 9780: Olins
+Sentence 9790: Sir Peter Imbert
+Sentence 9807: Sir Peter Imbert
+Sentence 9807: Geoffrey Dear
+Sentence 9807: Paul Condon
+Sentence 9813: Joanne
+Sentence 9816: Russell Thomas
+Sentence 9817: Alan Ball
+Sentence 9817: Mick Mills
+Sentence 9818: Mills
+Sentence 9820: Mills
+Sentence 9825: Mike Pejic
+Sentence 9827: Peter Reid
+Sentence 9827: Cyril Knowles
+Sentence 9827: Terry Dolan
+Sentence 9828: Denis Dunford
+Sentence 9828: Nigel
+Sentence 9828: Gary
+Sentence 9830: Andy Platt
+Sentence 9831: Ken Wheldon
+Sentence 9835: Bolton
+Sentence 9837: Bolton
+Sentence 9838: Brown
+Sentence 9838: Bolton
+Sentence 9838: Shearer
+Sentence 9839: Nat
+Sentence 9840: Phil Neal
+Sentence 9841: Bolton
+Sentence 9843: Bolton
+Sentence 9848: Bolton
+Sentence 9850: White
+Sentence 9852: Bolton
+Sentence 9854: Bolton
+Sentence 9854: Brown
+Sentence 9854: Winstanley
+Sentence 9855: Jones
+Sentence 9855: Shearer
+Sentence 9856: K
+Sentence 9857: Gabbiadini
+Sentence 9858: David Foot
+Sentence 9859: MARCO
+Sentence 9863: Shaun
+Sentence 9864: John Williams
+Sentence 9865: Gabbiadini
+Sentence 9870: Blissett
+Sentence 9871: Shearer
+Sentence 9871: O'Driscoll
+Sentence 9871: Blissett
+Sentence 9872: Carter
+Sentence 9872: Williams
+Sentence 9872: Bennett
+Sentence 9872: Gates
+Sentence 9875: Barden
+Sentence 9877: Nigel
+Sentence 9878: Jiangchuan
+Sentence 9880: Steve Cousins
+Sentence 9881: Joanne
+Sentence 9881: Gina
+Sentence 9882: Jason
+Sentence 9882: Simon
+Sentence 9883: Simon
+Sentence 9883: Jason
+Sentence 9883: Kathryn
+Sentence 9885: Bob Fisher
+Sentence 9886: Lawrie Smith
+Sentence 9891: Grant Dalton
+Sentence 9892: Dalton
+Sentence 9893: Smith
+Sentence 9894: Peter Blake
+Sentence 9895: Tracy Edwards
+Sentence 9896: Maiden
+Sentence 9897: Rugby
+Sentence 9898: Paul Fitzpatrick
+Sentence 9902: Francis Leota
+Sentence 9903: George Mann
+Sentence 9904: Clark
+Sentence 9904: Manning
+Sentence 9912: Ropati
+Sentence 9912: Manning
+Sentence 9912: Clark
+Sentence 9912: Smith
+Sentence 9913: Mann
+Sentence 9916: GARRY
+Sentence 9916: Paul Fitzpatrick
+Sentence 9918: John Bentley
+Sentence 9920: Craig Richards
+Sentence 9920: Bitter
+Sentence 9921: Andy Bateman
+Sentence 9922: Darlington
+Sentence 9922: David Hopps
+Sentence 9923: Michael Knighton
+Sentence 9923: John Smart
+Sentence 9927: Smart
+Sentence 9930: John Hall
+Sentence 9932: Hall
+Sentence 9933: Philip Benison
+Sentence 9934: Roland
+Sentence 9947: Brian Little
+Sentence 9953: Frank Gray
+Sentence 9954: David Cork
+Sentence 9954: Kevan Smith
+Sentence 9955: Andy Toman
+Sentence 9956: Darlington
+Sentence 9957: John Borthwick
+Sentence 9958: Richard Corden
+Sentence 9960: Stephen
+Sentence 9968: Wycombe
+Sentence 9968: Cheltenham
+Sentence 9968: Altrincham
+Sentence 9974: Brian Little
+Sentence 9976: Pat Rowley
+Sentence 9979: Bernard
+
+============================================================
+Total extracted person names: 3488
