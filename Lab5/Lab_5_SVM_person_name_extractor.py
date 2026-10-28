@@ -64,3 +64,38 @@ if current_sentence:
     conll_sentences.append(current_sentence)
 
 print(f"CoNLL sentences loaded: {len(conll_sentences)}")
+
+
+# ---------------------------------------------------------
+# Extract Word Features for SVM
+# ---------------------------------------------------------
+
+def extract_word_features(words, index):
+    word = words[index]
+
+    features = {
+        "word.lower": word.lower(),
+        "word.istitle": word.istitle(),
+        "word.isupper": word.isupper(),
+        "word.isdigit": word.isdigit(),
+        "prefix2": word[:2].lower(),
+        "suffix2": word[-2:].lower(),
+        "suffix3": word[-3:].lower(),
+        "length": len(word)
+    }
+
+    if index > 0:
+        previous = words[index - 1]
+        features["previous.lower"] = previous.lower()
+        features["previous.istitle"] = previous.istitle()
+    else:
+        features["beginning"] = True
+
+    if index < len(words) - 1:
+        following = words[index + 1]
+        features["next.lower"] = following.lower()
+        features["next.istitle"] = following.istitle()
+    else:
+        features["ending"] = True
+
+    return features
