@@ -223,3 +223,28 @@ def extract_person_names(sentence):
         names.append(" ".join(current_name))
 
     return list(dict.fromkeys(names))
+
+
+# ---------------------------------------------------------
+# Process BNC Baby Sentences
+# ---------------------------------------------------------
+
+results = []
+
+for sentence_number, sentence in sentences:
+    names = extract_person_names(sentence)
+
+    for name in names:
+        results.append((sentence_number, name))
+
+
+# ---------------------------------------------------------
+# Display Sample Results
+# ---------------------------------------------------------
+
+print("\nFirst 50 extracted person names:")
+
+for sentence_number, name in results[:50]:
+    print(f"Sentence {sentence_number}: {name}")
+
+print(f"\nTotal extracted person names: {len(results)}")
