@@ -14,6 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_selection import VarianceThreshold
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, classification_report
 
@@ -133,3 +134,60 @@ print(
         zero_division=0
     )
 )
+
+# --------------------------------------------------
+# 8. Train K-Nearest Neighbors (KNN)
+# --------------------------------------------------
+
+print("\nTraining K-Nearest Neighbors...")
+
+knn_model = Pipeline([
+    (
+        "variance_filter",
+        VarianceThreshold(threshold=0.0)
+    ),
+    (
+        "scaler",
+        StandardScaler()
+    ),
+    (
+        "classifier",
+        KNeighborsClassifier(n_neighbors=5)
+    )
+])
+
+knn_model.fit(X_train, y_train)
+
+# --------------------------------------------------
+# 9. Evaluate KNN
+# --------------------------------------------------
+
+knn_pred = knn_model.predict(X_test)
+
+knn_accuracy = accuracy_score(y_test, knn_pred)
+
+print("\nKNN Results")
+print("-" * 50)
+
+print(f"Test Accuracy: {knn_accuracy:.4f}")
+print(f"Test Accuracy (%): {knn_accuracy * 100:.2f}%")
+
+print("\nClassification Report:")
+print(
+    classification_report(
+        y_test,
+        knn_pred,
+        zero_division=0
+    )
+)
+
+
+# --------------------------------------------------
+# 10. Compare initial models
+# --------------------------------------------------
+
+print("\nModel Comparison")
+print("-" * 50)
+
+print(f"Logistic Regression: {accuracy * 100:.2f}%")
+print(f"KNN:                 {knn_accuracy * 100:.2f}%")
