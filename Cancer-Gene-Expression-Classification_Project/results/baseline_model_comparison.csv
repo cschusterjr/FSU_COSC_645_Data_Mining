@@ -1,0 +1,5 @@
+Model,Accuracy
+Linear SVM,1.0
+Logistic Regression,0.9813664596273292
+K-Nearest Neighbors,0.9751552795031055
+Gaussian Naive Bayes,0.5714285714285714
