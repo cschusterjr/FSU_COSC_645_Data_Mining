@@ -17,6 +17,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, classification_report
+from sklearn.naive_bayes import GaussianNB
 
 
 # --------------------------------------------------
@@ -191,3 +192,63 @@ print("-" * 50)
 
 print(f"Logistic Regression: {accuracy * 100:.2f}%")
 print(f"KNN:                 {knn_accuracy * 100:.2f}%")
+
+
+# --------------------------------------------------
+# 11. Train Gaussian Naive Bayes
+# --------------------------------------------------
+
+print("\nTraining Gaussian Naive Bayes...")
+
+nb_model = Pipeline([
+    (
+        "variance_filter",
+        VarianceThreshold(threshold=0.0)
+    ),
+    (
+        "scaler",
+        StandardScaler()
+    ),
+    (
+        "classifier",
+        GaussianNB()
+    )
+])
+
+nb_model.fit(X_train, y_train)
+
+
+# --------------------------------------------------
+# 12. Evaluate Gaussian Naive Bayes
+# --------------------------------------------------
+
+nb_pred = nb_model.predict(X_test)
+
+nb_accuracy = accuracy_score(y_test, nb_pred)
+
+print("\nGaussian Naive Bayes Results")
+print("-" * 50)
+
+print(f"Test Accuracy: {nb_accuracy:.4f}")
+print(f"Test Accuracy (%): {nb_accuracy * 100:.2f}%")
+
+print("\nClassification Report:")
+print(
+    classification_report(
+        y_test,
+        nb_pred,
+        zero_division=0
+    )
+)
+
+
+# --------------------------------------------------
+# 13. Compare all three models
+# --------------------------------------------------
+
+print("\nUpdated Model Comparison")
+print("-" * 50)
+
+print(f"Logistic Regression: {accuracy * 100:.2f}%")
+print(f"KNN:                 {knn_accuracy * 100:.2f}%")
+print(f"Gaussian Naive Bayes:{nb_accuracy * 100:7.2f}%")
