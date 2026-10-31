@@ -1,0 +1,135 @@
+"""
+COSC 645 Semester Project
+Cancer Type Classification Using Gene Expression Data
+
+Milestone 5: Machine-Learning Model Development
+Model 1: Logistic Regression
+"""
+
+from pathlib import Path
+
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.feature_selection import VarianceThreshold
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import accuracy_score, classification_report
+
+
+# --------------------------------------------------
+# 1. Define project paths
+# --------------------------------------------------
+
+project_dir = Path(__file__).resolve().parents[1]
+data_dir = project_dir / "data" / "raw"
+
+print("COSC 645 - Logistic Regression Model")
+print("-" * 50)
+
+
+# --------------------------------------------------
+# 2. Load the dataset
+# --------------------------------------------------
+
+data = pd.read_csv(data_dir / "data.csv", index_col=0)
+labels = pd.read_csv(data_dir / "labels.csv", index_col=0)
+
+# Confirm that the samples match
+assert data.index.equals(labels.index), (
+    "Sample identifiers do not match."
+)
+
+X = data
+y = labels["Class"]
+
+print(f"Total samples: {X.shape[0]}")
+print(f"Original features: {X.shape[1]}")
+print(f"Cancer classes: {sorted(y.unique())}")
+
+
+# --------------------------------------------------
+# 3. Split training and testing data
+# --------------------------------------------------
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.20,
+    random_state=42,
+    stratify=y
+)
+
+print(f"\nTraining samples: {len(X_train)}")
+print(f"Testing samples: {len(X_test)}")
+
+
+# --------------------------------------------------
+# 4. Create the machine-learning pipeline
+# --------------------------------------------------
+
+model = Pipeline([
+    (
+        "variance_filter",
+        VarianceThreshold(threshold=0.0)
+    ),
+    (
+        "scaler",
+        StandardScaler()
+    ),
+    (
+        "classifier",
+        LogisticRegression(
+            max_iter=2000,
+            solver="lbfgs",
+            random_state=42
+        )
+    )
+])
+
+# --------------------------------------------------
+# 5. Train the model
+# --------------------------------------------------
+
+print("\nTraining Logistic Regression...")
+
+model.fit(X_train, y_train)
+
+print("Training complete.")
+
+filtered_features = (
+    model.named_steps["variance_filter"]
+    .get_support()
+    .sum()
+)
+
+print(f"Features after filtering: {filtered_features}")
+
+
+# --------------------------------------------------
+# 6. Make predictions
+# --------------------------------------------------
+
+y_pred = model.predict(X_test)
+
+
+# --------------------------------------------------
+# 7. Evaluate initial performance
+# --------------------------------------------------
+
+accuracy = accuracy_score(y_test, y_pred)
+
+print("\nLogistic Regression Results")
+print("-" * 50)
+print(f"Test Accuracy: {accuracy:.4f}")
+print(f"Test Accuracy (%): {accuracy * 100:.2f}%")
+
+print("\nClassification Report:")
+print(
+    classification_report(
+        y_test,
+        y_pred,
+        zero_division=0
+    )
+)
