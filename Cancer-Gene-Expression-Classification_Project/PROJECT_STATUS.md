@@ -170,3 +170,85 @@ The next milestone will focus on developing machine-learning classification mode
 Models will be evaluated using the original filtered gene-expression features and PCA-transformed features to investigate the effect of dimensionality reduction on classification performance.
 
 **Milestone 4 Status: Complete**
+
+Milestone 5: Machine-Learning Model Development
+
+Overview
+
+This milestone focused on developing and evaluating four machine-learning algorithms to classify cancer types using gene-expression data. The objective was to establish baseline classification performance before investigating the effects of dimensionality reduction through Principal Component Analysis (PCA).
+
+The models were developed using Python and scikit-learn. Each model used the same stratified training and testing split to allow for consistent comparisons.
+
+Models Implemented
+
+Four classification algorithms were developed:
+
+Logistic Regression: A linear classification model used to establish baseline performance.
+
+K-Nearest Neighbors (KNN): A distance-based classifier that predicts cancer types using the five nearest training samples.
+
+Gaussian Naive Bayes: A probabilistic classifier that assumes features are conditionally independent within each cancer class.
+
+Linear Support Vector Machine (SVM): A classifier that identifies decision boundaries between cancer types.
+
+Data Preparation
+
+The original dataset contained 801 samples and 20,531 gene-expression features representing five cancer types: BRCA, COAD, KIRC, LUAD, and PRAD.
+
+The dataset was divided into 640 training samples and 161 testing samples using a stratified 80/20 split.
+
+Feature filtering removed 277 constant features, leaving 20,254 features. Standardization was applied to the remaining features.
+
+Preprocessing was implemented through scikit-learn pipelines to ensure that transformations were fitted using training data only, preventing data leakage.
+
+Initial Classification Results
+
+The following results were obtained using the held-out test dataset without PCA.
+
+Model
+
+Test Accuracy
+
+Correct Predictions
+
+Linear SVM
+
+100.00%
+
+161/161
+
+Logistic Regression
+
+98.14%
+
+158/161
+
+K-Nearest Neighbors
+
+97.52%
+
+157/161
+
+Gaussian Naive Bayes
+
+57.14%
+
+92/161
+
+Linear SVM achieved the highest observed accuracy, correctly classifying all 161 test samples. Logistic Regression and KNN also demonstrated strong performance, with accuracy exceeding 97%.
+
+Gaussian Naive Bayes performed considerably worse, suggesting that its statistical assumptions may not be well suited to the relationships present in this gene-expression dataset.
+
+These results represent performance on a single held-out test split and should not be interpreted as evidence of equivalent performance on independent clinical datasets.
+
+Key Findings
+
+The gene-expression dataset contains patterns that can be used to distinguish the five cancer types with high accuracy.
+
+Model selection has a substantial impact on classification performance.
+
+Linear SVM achieved perfect classification on the current test set, although additional validation is needed to assess generalization.
+
+Gaussian Naive Bayes struggled with certain cancer types, particularly colon cancer, where recall was approximately 6%.
+
+The baseline results provide a benchmark for evaluating the impact of PCA in the next milestone.
