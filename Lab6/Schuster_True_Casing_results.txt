@@ -1,0 +1,35 @@
+COSC 645 - Lab 6: True Casing
+Dynamic Programming / Viterbi Algorithm
+--------------------------------------------------
+
+Test 1
+Original:  i visited new york with john smith.
+Corrected: I visited New York with John Smith.
+
+Test 2
+Original:  mary and jane traveled to london.
+Corrected: Mary and Jane traveled to London.
+
+Test 3
+Original:  microsoft and google use artificial intelligence.
+Corrected: Microsoft and Google use artificial intelligence.
+
+Test 4
+Original:  i am learning python in my data mining class.
+Corrected: I am learning Python in my data mining class.
+
+Test 5
+Original:  nasa is located in the united states.
+Corrected: NASA is located in the United States.
+
+Test 6
+Original:  john traveled from baltimore to washington.
+Corrected: John traveled from Baltimore to Washington.
+
+Test 7
+Original:  the students visited paris and new york.
+Corrected: The students visited Paris and New York.
+
+Test 8
+Original:  i live in maryland. john lives in new york.
+Corrected: I live in Maryland. John lives in New York.
