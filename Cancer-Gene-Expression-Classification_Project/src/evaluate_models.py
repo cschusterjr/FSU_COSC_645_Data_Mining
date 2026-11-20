@@ -24,6 +24,12 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import LinearSVC
 
+import matplotlib.pyplot as plt
+
+from sklearn.metrics import (
+    confusion_matrix,
+    ConfusionMatrixDisplay
+)
 
 # --------------------------------------------------
 # 1. Set up project paths
@@ -196,3 +202,84 @@ print("\nResults saved to:")
 print(output_file)
 
 print("\nMilestone 6 - Cross-validation complete.")
+
+
+# --------------------------------------------------
+# 8. Generate confusion matrices
+# --------------------------------------------------
+
+print("\nGenerating confusion matrices...")
+print("-" * 50)
+
+for model_name, classifier in classifiers.items():
+
+    pipeline = Pipeline([
+        (
+            "variance_filter",
+            VarianceThreshold(threshold=0.0)
+        ),
+        (
+            "scaler",
+            StandardScaler()
+        ),
+        (
+            "classifier",
+            classifier
+        )
+    ])
+
+    # Train using the original training set
+    pipeline.fit(X_train, y_train)
+
+    # Predict the held-out test set
+    predictions = pipeline.predict(X_test)
+
+    # Generate confusion matrix
+    class_names = sorted(y.unique())
+
+    cm = confusion_matrix(
+        y_test,
+        predictions,
+        labels=class_names
+    )
+
+    display = ConfusionMatrixDisplay(
+        confusion_matrix=cm,
+        display_labels=class_names
+    )
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    display.plot(
+        ax=ax,
+        cmap="Blues",
+        values_format="d",
+        colorbar=False
+    )
+
+    ax.set_title(
+        f"Confusion Matrix: {model_name}"
+    )
+
+    plt.tight_layout()
+
+    # Save figure
+    filename = (
+        model_name.lower()
+        .replace(" ", "_")
+        + "_confusion_matrix.png"
+    )
+
+    output_path = results_dir / filename
+
+    plt.savefig(
+        output_path,
+        dpi=300,
+        bbox_inches="tight"
+    )
+
+    plt.close(fig)
+
+    print(f"Saved: {filename}")
+
+print("\nConfusion matrix generation complete.")

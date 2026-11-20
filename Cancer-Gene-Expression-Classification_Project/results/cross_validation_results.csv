@@ -1,0 +1,5 @@
+Model,Mean CV Accuracy,CV Standard Deviation
+Linear SVM,1.0,0.0
+K-Nearest Neighbors,0.9984375,0.003125
+Logistic Regression,0.9953125,0.00625
+Gaussian Naive Bayes,0.596875,0.04352621336620037
